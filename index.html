@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Guilherme Schaeffer · Desenvolvedor Unity · Simulação e Apps</title>
+<meta name="description" content="Desenvolvedor Unity/C# focado em simuladores de treinamento agrícolas e de equipamentos pesados, e apps em TypeScript/React.">
+<style>
+:root{--bg:#0c0a0b;--card:#171113;--fg:#f2ebec;--mut:#aa9ba0;--acc:#e63950;--accbg:#a81f34;--line:#2d1b20}
+[data-theme=light]{--bg:#faf6f6;--card:#fff;--fg:#1a1214;--mut:#6a5a5f;--acc:#a81f34;--accbg:#a81f34;--line:#ead9dc}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.6 system-ui,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--fg)}
+a{color:var(--acc)}
+header{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);z-index:5}
+nav{max-width:1000px;margin:auto;padding:.7rem 1.2rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+nav b{margin-right:auto;letter-spacing:.05em}
+nav a{color:var(--fg);text-decoration:none;font-size:.95rem}
+button{background:none;border:1px solid var(--line);color:var(--fg);border-radius:6px;padding:.25rem .6rem;cursor:pointer}
+button[aria-pressed=true]{border-color:var(--acc);color:var(--acc)}
+main{max-width:1000px;margin:auto;padding:0 1.2rem}
+section{padding:3rem 0;border-bottom:1px solid var(--line)}
+h1{font-size:clamp(2rem,6vw,3.4rem);line-height:1.1;margin:.3rem 0}
+h2{font-size:1.6rem;margin:0 0 .3rem}
+.kick{color:var(--acc);text-transform:uppercase;font-size:.8rem;letter-spacing:.12em}
+.lead{color:var(--mut);max-width:680px}
+.cta{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.4rem}
+.btn{display:inline-block;padding:.6rem 1.1rem;border-radius:8px;border:1px solid var(--acc);text-decoration:none;color:var(--fg)}
+.btn.p{background:var(--accbg);border-color:var(--accbg);color:#fff;font-weight:600}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:2rem}
+.stat,.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1.1rem}
+.stat b{font-size:1.8rem;color:var(--acc);display:block}
+.stat span{color:var(--mut);font-size:.9rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1rem;margin-top:1.4rem}
+.tag{display:inline-block;font-size:.75rem;border:1px solid var(--line);border-radius:99px;padding:.1rem .6rem;color:var(--mut);margin:.15rem .2rem 0 0}
+.card h3{margin:.2rem 0}.card p{color:var(--mut);margin:.4rem 0}
+table{width:100%;border-collapse:collapse;margin-top:1rem}
+td,th{padding:.55rem .6rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{width:30%}
+.note{color:var(--mut);font-size:.85rem}
+footer{max-width:1000px;margin:auto;padding:2rem 1.2rem;color:var(--mut);font-size:.85rem}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.6rem;margin-top:.8rem}
+.gal img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:8px;border:1px solid var(--line);display:block}
+.gal a:hover img{border-color:var(--acc)}
+[data-l]{display:none}
+html[lang=pt-BR] [data-l=pt],html[lang=en] [data-l=en]{display:revert}
+</style>
+</head>
+<body>
+<header><nav>
+<b>GUILHERME SCHAEFFER</b>
+<a href="#projetos"><span data-l="pt">Projetos</span><span data-l="en">Projects</span></a>
+<a href="#galeria"><span data-l="pt">Galeria</span><span data-l="en">Gallery</span></a>
+<a href="#skills">Skills</a>
+<a href="#sobre"><span data-l="pt">Sobre</span><span data-l="en">About</span></a>
+<a href="#contato"><span data-l="pt">Contato</span><span data-l="en">Contact</span></a>
+<span><button id="pt" aria-pressed="true">PT</button> <button id="en" aria-pressed="false">EN</button></span>
+<button id="th" aria-label="Tema / Theme">◐</button>
+</nav></header>
+<main>
+<section id="inicio">
+<div class="kick"><span data-l="pt">Simulação de treinamento · Unity · Apps</span><span data-l="en">Training simulation · Unity · Apps</span></div>
+<h1>Guilherme Schaeffer</h1>
+<p class="lead" data-l="pt">Desenvolvedor Unity/C# em simuladores de treinamento para máquinas agrícolas e de construção (colheitadeira, plantadeira, pulverizador, escavadeira). Também construo apps em TypeScript/React para web, desktop (Electron) e Android, com atenção a acessibilidade e segurança.</p>
+<p class="lead" data-l="en">Unity/C# developer working on training simulators for agricultural and construction machinery (combine harvester, planter, sprayer, excavator). I also build TypeScript/React apps for web, desktop (Electron) and Android, with a focus on accessibility and security.</p>
+<div class="cta"><a class="btn p" href="#projetos"><span data-l="pt">Ver projetos</span><span data-l="en">See projects</span></a><a class="btn" href="#contato"><span data-l="pt">Contato</span><span data-l="en">Contact</span></a></div>
+<div class="stats">
+<div class="stat"><b>1.346</b><span data-l="pt">commits (sem merges) nas minhas contas, de 2022 a 2026</span><span data-l="en">commits (excluding merges) across my accounts, 2022–2026</span></div>
+<div class="stat"><b>700+</b><span data-l="pt">commits no GitLab da empresa, ago/2025 a nov/2026</span><span data-l="en">commits on the company GitLab, Aug 2025 to Nov 2026</span></div>
+<div class="stat"><b>4</b><span data-l="pt">meses seguidos com 36 a 63 commits/mês no simulador de escavadeira</span><span data-l="en">straight months of 36 to 63 commits/month on the excavator simulator</span></div>
+<div class="stat"><b>211</b><span data-l="pt">commits em ~5 semanas no Life OS, com 90 arquivos TS/TSX criados</span><span data-l="en">commits in ~5 weeks on Life OS, with 90 TS/TSX files created</span></div>
+<div class="stat"><b>2022</b><span data-l="pt">primeiro projeto Unity versionado</span><span data-l="en">first versioned Unity project</span></div>
+</div>
+<p class="note" data-l="pt">Números do histórico git local (inclui commits de stash). Linhas de código não são usadas, pois incluem assets.</p>
+<p class="note" data-l="en">Numbers from local git history (includes stash commits). Line counts are not used because they include assets.</p>
+</section>
+
+<section id="projetos">
+<div class="kick"><span data-l="pt">Projetos</span><span data-l="en">Projects</span></div>
+<h2><span data-l="pt">Simuladores e apps</span><span data-l="en">Simulators and apps</span></h2>
+<div class="grid">
+<article class="card"><span class="tag">Unity · C#</span><span class="tag">2026</span>
+<h3><span data-l="pt">Simulador de escavadeira</span><span data-l="en">Excavator simulator</span></h3>
+<p data-l="pt">Lógica de lições e avaliação de treinamento em C#: handlers de lição para escavadeira de precisão, ciclo de mina integrado, carregamento de caminhão com pá-carregadeira, caminhão basculante e retroescavadeira. 210 commits em 5 meses, cerca de 28 mil linhas de C# em 112 arquivos, além de colisão da caçamba com a caçamba do caminhão, menu e UI.</p>
+<p data-l="en">Training lesson and grading logic in C#: lesson handlers for precision excavation, an integrated mine cycle, wheel-loader truck loading, dump truck and backhoe. 210 commits over 5 months, about 28k lines of C# across 112 files, plus bucket-to-truck-bed collision, menu and UI.</p></article>
+<article class="card"><span class="tag">Unity · C#</span><span class="tag">2026</span>
+<h3><span data-l="pt">Simulador agrícola</span><span data-l="en">Agricultural simulator</span></h3>
+<p data-l="pt">21 arquivos C# alterados (cerca de 3 mil linhas): relatório de lição e UI de tarefas, pontuação de operações pela área do implemento com testes automatizados, rastreio de zona de plantio, seleção de máquina em carrossel e ferramenta de editor para a vegetação da fazenda. Também colheitadeira L500 com plataforma de 35 pés e personalização visual de veículos. 28 commits.</p>
+<p data-l="en">21 C# files changed (about 3k lines): lesson report and task UI, operation scoring by implement footprint with automated tests, planting-zone tracking, carousel machine selection and an editor tool for farm vegetation. Also the L500 combine with 35-ft header and vehicle visual customization. 28 commits.</p></article>
+<article class="card"><span class="tag">Unity · C#</span><span class="tag">2023–2026</span>
+<h3><span data-l="pt">Sistema de treinamento e veículos agrícolas</span><span data-l="en">Training system and agricultural vehicles</span></h3>
+<p data-l="pt">Sistema de treinamento do simulador: gerenciador de lições, exportação de relatório em PDF (44 revisões), telemetria, menus, seleção em carrossel e gestão de cenas, cerca de 30 scripts autorais. Nos veículos, controladores de colheitadeira, plantadeira e pulverizador (descarga, suspensão, dano). Cerca de 660 commits somados.</p>
+<p data-l="en">Simulator training system: lesson manager, PDF report export (44 revisions), telemetry, menus, carousel selection and scene management, about 30 authored scripts. On vehicles, combine, planter and sprayer controllers (unloading, suspension, damage). About 660 commits combined.</p></article>
+<article class="card"><span class="tag">Unity · C#</span><span class="tag">Level design</span><span class="tag">2024–2025</span>
+<h3><span data-l="pt">Simulador de cidade e estradas (rdv6)</span><span data-l="en">City and roads simulator (rdv6)</span></h3>
+<p data-l="pt">Ambientação e level design: terreno, vegetação com LOD e billboards, estradas, aeroporto, túneis com iluminação e colisores, cidade rural, tráfego com IA de ônibus e caminhão, cruzamentos ferroviários e tombador de grãos. 210 commits em 6 meses (pico em janeiro de 2025), cerca de 19% do projeto. Código autoral pequeno: 6 scripts (trem, cruzamento, tombador).</p>
+<p data-l="en">Environment and level design: terrain, vegetation with LOD and billboards, roads, airport, tunnels with lighting and colliders, rural town, bus and truck AI traffic, railway crossings and a grain dump platform. 210 commits over 6 months (peak in January 2025), about 19% of the project. Small authored code: 6 scripts (train, crossing, grain dump).</p></article>
+<article class="card"><span class="tag">TypeScript · React</span><span class="tag">Electron · Android</span>
+<h3>Life OS</h3>
+<p data-l="pt">App pessoal multiplataforma: web, Electron (Windows) e Android com localização. Revisão visual, correções de contraste e animações (acessibilidade) e auditoria de segurança no CI. 211 commits, 40 mil linhas de TS/TSX adicionadas.</p>
+<p data-l="en">Personal cross-platform app: web, Electron (Windows) and localized Android. Visual refresh, contrast/animation accessibility fixes and CI security audit. 211 commits, 40k lines of TS/TSX added.</p></article>
+<article class="card"><span class="tag">Unity · C#</span><span class="tag">2025–2026</span>
+<h3>RDLesson</h3>
+<p data-l="pt">Contribuições ao pacote de lições: gerenciador de UI, banco de dados e controlador de relatório. 9 commits, cerca de 170 linhas em 5 arquivos.</p>
+<p data-l="en">Contributions to the lessons package: UI manager, database and report controller. 9 commits, about 170 lines across 5 files.</p></article>
+<article class="card"><span class="tag">Unity</span><span class="tag">2022</span>
+<h3><span data-l="pt">Jogo 3D de sobrevivência</span><span data-l="en">3D survival game</span></h3>
+<p data-l="pt">Meu primeiro projeto: personagem animado, câmera, inventário, coleta de itens, chuva, fogo e iluminação.</p>
+<p data-l="en">My first project: animated character, camera, inventory, item pickup, rain, fire and lighting.</p></article>
+</div>
+</section>
+
+<section id="empresas">
+<div class="kick"><span data-l="pt">Empresas e clientes</span><span data-l="en">Companies and clients</span></div>
+<h2><span data-l="pt">Onde o trabalho foi feito, e para quem</span><span data-l="en">Where the work was done, and for whom</span></h2>
+<div class="grid">
+<article class="card"><span class="tag"><span data-l="pt">Empresa</span><span data-l="en">Company</span></span><h3>rdsimtech</h3><p data-l="pt">Unity Developer (freelance) · desde set/2025</p><p data-l="en">Unity Developer (freelance) · since Sep 2025</p></article>
+<article class="card"><span class="tag"><span data-l="pt">Empresa</span><span data-l="en">Company</span></span><h3>RealDrive Tech</h3><p data-l="pt">Desenvolvedor de software (terceirizado) · desde nov/2021</p><p data-l="en">Software developer (contractor) · since Nov 2021</p></article>
+<article class="card"><span class="tag"><span data-l="pt">Cliente</span><span data-l="en">Client</span></span><h3>SENAI</h3><p data-l="pt">Simulador de Linha Amarela (Yellow): escavadeira, pá-carregadeira e caminhão</p><p data-l="en">Yellow Line simulator: excavator, wheel loader and dump truck</p></article>
+<article class="card"><span class="tag"><span data-l="pt">Cliente</span><span data-l="en">Client</span></span><h3>Schio</h3><p data-l="pt">Simulador do pomar de maçã e armazém</p><p data-l="en">Apple orchard and warehouse simulator</p></article>
+<article class="card"><span class="tag"><span data-l="pt">Apoio</span><span data-l="en">Support</span></span><h3>Finep</h3><p data-l="pt">Programa AGRO 4.0 · RDA Agro (simulador agrícola)</p><p data-l="en">AGRO 4.0 program · RDA Agro (agricultural simulator)</p></article>
+</div>
+<p class="note" data-l="pt">Os trabalhos para clientes foram feitos em equipe, por meio da RealDrive Tech e da rdsimtech. Nomes e marcas pertencem aos seus donos.</p>
+<p class="note" data-l="en">Client work was done as part of a team, through RealDrive Tech and rdsimtech. Names and brands belong to their owners.</p>
+</section>
+
+<section id="galeria">
+<div class="kick"><span data-l="pt">Galeria</span><span data-l="en">Gallery</span></div>
+<h2><span data-l="pt">Capturas dos projetos</span><span data-l="en">Project captures</span></h2>
+<p class="note" data-l="pt">Imagens de simuladores em que trabalhei, em ambiente de desenvolvimento. Clique para ampliar.</p>
+<p class="note" data-l="en">Images of simulators I worked on, in the development environment. Click to enlarge.</p>
+<h3 style="margin-top:1.6rem"><span data-l="pt">Cenários: estradas, terreno e vegetação</span><span data-l="en">Scenery: roads, terrain and vegetation</span></h3>
+<div class="gal">
+<a href="cen-01.jpg" target="_blank" rel="noopener"><img src="cen-01.jpg" loading="lazy" alt="Cenário de simulação 1"></a>
+<a href="cen-02.jpg" target="_blank" rel="noopener"><img src="cen-02.jpg" loading="lazy" alt="Cenário de simulação 2"></a>
+<a href="cen-03.jpg" target="_blank" rel="noopener"><img src="cen-03.jpg" loading="lazy" alt="Cenário de simulação 3"></a>
+<a href="cen-04.jpg" target="_blank" rel="noopener"><img src="cen-04.jpg" loading="lazy" alt="Cenário de simulação 4"></a>
+<a href="cen-05.jpg" target="_blank" rel="noopener"><img src="cen-05.jpg" loading="lazy" alt="Cenário de simulação 5"></a>
+<a href="cen-06.jpg" target="_blank" rel="noopener"><img src="cen-06.jpg" loading="lazy" alt="Cenário de simulação 6"></a>
+<a href="cen-07.jpg" target="_blank" rel="noopener"><img src="cen-07.jpg" loading="lazy" alt="Cenário de simulação 7"></a>
+</div>
+<h3 style="margin-top:1.6rem"><span data-l="pt">Simulador agrícola</span><span data-l="en">Agricultural simulator</span></h3>
+<div class="gal">
+<a href="agro-01.jpg" target="_blank" rel="noopener"><img src="agro-01.jpg" loading="lazy" alt="Simulador agrícola 1"></a>
+<a href="agro-02.jpg" target="_blank" rel="noopener"><img src="agro-02.jpg" loading="lazy" alt="Simulador agrícola 2"></a>
+<a href="agro-03.jpg" target="_blank" rel="noopener"><img src="agro-03.jpg" loading="lazy" alt="Simulador agrícola 3"></a>
+<a href="agro-04.jpg" target="_blank" rel="noopener"><img src="agro-04.jpg" loading="lazy" alt="Simulador agrícola 4"></a>
+<a href="agro-05.jpg" target="_blank" rel="noopener"><img src="agro-05.jpg" loading="lazy" alt="Simulador agrícola 5"></a>
+<a href="agro-06.jpg" target="_blank" rel="noopener"><img src="agro-06.jpg" loading="lazy" alt="Simulador agrícola 6"></a>
+<a href="agro-07.jpg" target="_blank" rel="noopener"><img src="agro-07.jpg" loading="lazy" alt="Simulador agrícola 7"></a>
+<a href="agro-08.jpg" target="_blank" rel="noopener"><img src="agro-08.jpg" loading="lazy" alt="Simulador agrícola 8"></a>
+<a href="agro-09.jpg" target="_blank" rel="noopener"><img src="agro-09.jpg" loading="lazy" alt="Simulador agrícola 9"></a>
+<a href="agro-10.jpg" target="_blank" rel="noopener"><img src="agro-10.jpg" loading="lazy" alt="Simulador agrícola 10"></a>
+<a href="agro-11.jpg" target="_blank" rel="noopener"><img src="agro-11.jpg" loading="lazy" alt="Simulador agrícola 11"></a>
+<a href="agro-12.jpg" target="_blank" rel="noopener"><img src="agro-12.jpg" loading="lazy" alt="Simulador agrícola 12"></a>
+<a href="agro-13.jpg" target="_blank" rel="noopener"><img src="agro-13.jpg" loading="lazy" alt="Simulador agrícola 13"></a>
+<a href="agro-14.jpg" target="_blank" rel="noopener"><img src="agro-14.jpg" loading="lazy" alt="Simulador agrícola 14"></a>
+</div>
+<h3 style="margin-top:1.6rem"><span data-l="pt">Simulador de escavadeira e equipamentos pesados</span><span data-l="en">Excavator and heavy-equipment simulator</span></h3>
+<div class="gal">
+<a href="esc-01.jpg" target="_blank" rel="noopener"><img src="esc-01.jpg" loading="lazy" alt="Simulador de equipamentos pesados 1"></a>
+<a href="esc-02.jpg" target="_blank" rel="noopener"><img src="esc-02.jpg" loading="lazy" alt="Simulador de equipamentos pesados 2"></a>
+<a href="esc-03.jpg" target="_blank" rel="noopener"><img src="esc-03.jpg" loading="lazy" alt="Simulador de equipamentos pesados 3"></a>
+<a href="esc-04.jpg" target="_blank" rel="noopener"><img src="esc-04.jpg" loading="lazy" alt="Simulador de equipamentos pesados 4"></a>
+<a href="esc-05.jpg" target="_blank" rel="noopener"><img src="esc-05.jpg" loading="lazy" alt="Simulador de equipamentos pesados 5"></a>
+<a href="esc-06.jpg" target="_blank" rel="noopener"><img src="esc-06.jpg" loading="lazy" alt="Simulador de equipamentos pesados 6"></a>
+<a href="esc-07.jpg" target="_blank" rel="noopener"><img src="esc-07.jpg" loading="lazy" alt="Simulador de equipamentos pesados 7"></a>
+<a href="esc-08.jpg" target="_blank" rel="noopener"><img src="esc-08.jpg" loading="lazy" alt="Simulador de equipamentos pesados 8"></a>
+<a href="esc-09.jpg" target="_blank" rel="noopener"><img src="esc-09.jpg" loading="lazy" alt="Simulador de equipamentos pesados 9"></a>
+<a href="esc-10.jpg" target="_blank" rel="noopener"><img src="esc-10.jpg" loading="lazy" alt="Simulador de equipamentos pesados 10"></a>
+<a href="esc-11.jpg" target="_blank" rel="noopener"><img src="esc-11.jpg" loading="lazy" alt="Simulador de equipamentos pesados 11"></a>
+<a href="esc-12.jpg" target="_blank" rel="noopener"><img src="esc-12.jpg" loading="lazy" alt="Simulador de equipamentos pesados 12"></a>
+</div>
+</section>
+
+<section id="skills">
+<div class="kick">Skills</div>
+<h2><span data-l="pt">O que faço, e onde aparece</span><span data-l="en">What I do, and where it shows</span></h2>
+<table>
+<tr><th>Unity / C#</th><td data-l="pt">Gameplay e simulação de máquinas, física e colisões, UI (Rewired), prefabs, materiais, shaders e terreno.</td><td data-l="en">Machine gameplay and simulation, physics and collisions, UI (Rewired), prefabs, materials, shaders and terrain.</td></tr>
+<tr><th>Level design</th><td data-l="pt">Ambientação de cidades e estradas, vegetação com LOD e billboards, iluminação de túneis, colisores e otimização de cenas.</td><td data-l="en">City and road environments, vegetation with LOD and billboards, tunnel lighting, colliders and scene optimization.</td></tr>
+<tr><th><span data-l="pt">Simulação e treinamento</span><span data-l="en">Simulation and training</span></th><td data-l="pt">Lições por etapas, pontuação, relatórios de desempenho, personalização.</td><td data-l="en">Step-based lessons, scoring, performance reports, customization.</td></tr>
+<tr><th>TypeScript / React / CSS</th><td data-l="pt">Interfaces com acessibilidade (contraste, animações) e localização.</td><td data-l="en">Accessible interfaces (contrast, animations) and localization.</td></tr>
+<tr><th><span data-l="pt">Multiplataforma</span><span data-l="en">Cross-platform</span></th><td>Electron (desktop), Android</td></tr>
+<tr><th><span data-l="pt">Engenharia</span><span data-l="en">Engineering</span></th><td data-l="pt">Git com branch dev, Conventional Commits, CI com auditoria de segurança, trabalho em equipe com merges.</td><td data-l="en">Git with dev branch, Conventional Commits, CI with security audit, teamwork with merges.</td></tr>
+</table>
+</section>
+
+<section id="sobre">
+<div class="kick"><span data-l="pt">Sobre</span><span data-l="en">About</span></div>
+<h2><span data-l="pt">Trajetória</span><span data-l="en">Background</span></h2>
+<p class="lead" data-l="pt">Desenvolvedor em Caxias do Sul (RS), na RealDrive Tech desde 2021, com foco em simuladores de treinamento de máquinas agrícolas e pesadas, realidade virtual e software educacional. Em 2026 passei a entregar em ritmo contínuo, com commits descritivos e escopo claro (feat, fix, chore). Em paralelo, desenvolvo o Life OS, um app multiplataforma.</p>
+<p class="lead" data-l="en">Developer based in Caxias do Sul, Brazil, at RealDrive Tech since 2021, focused on training simulators for agricultural and heavy machinery, virtual reality and educational software. In 2026 I moved to a steady delivery rhythm with descriptive, scoped commits (feat, fix, chore). On the side, I build Life OS, a cross-platform app.</p>
+<h3 style="margin-top:2rem"><span data-l="pt">Evolução</span><span data-l="en">Timeline</span></h3>
+<table>
+<tr><th>2022</th><td data-l="pt">Aprendizado em Unity: projetos de teste e um jogo 3D de sobrevivência (personagem animado, câmera, inventário, chuva, fogo, iluminação).</td><td data-l="en">Learning Unity: test projects and a 3D survival game (animated character, camera, inventory, rain, fire, lighting).</td></tr>
+<tr><th>2023–2025</th><td data-l="pt">Simuladores de treinamento de máquinas agrícolas e pesadas, realidade virtual e software educacional.</td><td data-l="en">Training simulators for agricultural and heavy machinery, virtual reality and educational software.</td></tr>
+<tr><th>2025–2026</th><td data-l="pt">Mais de 700 commits em 12 meses seguidos de atividade no repositório da empresa, em 8 projetos (escavadeira, agrícola, lições, VR, empilhadeira, estradas).</td><td data-l="en">700+ commits over 12 consecutive months of activity in the company repository, across 8 projects (excavator, agricultural, lessons, VR, forklift, roads).</td></tr>
+<tr><th>2026</th><td data-l="pt">Life OS: app multiplataforma (web, Electron e Android) com acessibilidade e auditoria de segurança no CI.</td><td data-l="en">Life OS: cross-platform app (web, Electron and Android) with accessibility and CI security audit.</td></tr>
+</table>
+<h3 style="margin-top:2rem"><span data-l="pt">Experiência</span><span data-l="en">Experience</span></h3>
+<table>
+<tr><th>RealDrive Tech</th><td data-l="pt">Desenvolvedor de software (terceirizado, híbrido) · nov/2021 até o momento</td><td data-l="en">Software developer (contractor, hybrid) · Nov 2021 to present</td></tr>
+<tr><th>rdsimtech</th><td data-l="pt">Unity Developer (freelance) · set/2025 até o momento</td><td data-l="en">Unity Developer (freelance) · Sep 2025 to present</td></tr>
+</table>
+<h3 style="margin-top:2rem"><span data-l="pt">Formação</span><span data-l="en">Education</span></h3>
+<table>
+<tr><th>UCS</th><td data-l="pt">Bacharelado em Ciência da Computação · jul/2026 a jan/2031 (em andamento)</td><td data-l="en">B.Sc. Computer Science · Jul 2026 to Jan 2031 (in progress)</td></tr>
+<tr><th>IFRS Caxias do Sul</th><td data-l="pt">Técnico integrado em Fabricação Mecânica · 2021 a 2024</td><td data-l="en">Integrated technical course in Mechanical Manufacturing · 2021 to 2024</td></tr>
+</table>
+</section>
+
+<section id="contato" style="border:0">
+<div class="kick"><span data-l="pt">Contato</span><span data-l="en">Contact</span></div>
+<h2><span data-l="pt">Vamos conversar</span><span data-l="en">Let's talk</span></h2>
+<p><a href="mailto:guischulze123@gmail.com">guischulze123@gmail.com</a> · <a href="https://www.linkedin.com/in/guilherme-schaeffer-schulze-52b40a30b/">LinkedIn</a></p>
+</section>
+</main>
+<footer>© 2026 Guilherme Schaeffer</footer>
+<script>
+const h=document.documentElement,g=id=>document.getElementById(id);
+function L(l){h.lang=l==='pt'?'pt-BR':'en';g('pt').setAttribute('aria-pressed',l==='pt');g('en').setAttribute('aria-pressed',l==='en')}
+g('pt').onclick=()=>L('pt');g('en').onclick=()=>L('en');
+g('th').onclick=()=>{h.dataset.theme=h.dataset.theme==='dark'?'light':'dark'};
+</script>
+</body>
+</html>
