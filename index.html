@@ -38,6 +38,7 @@ table{width:100%;border-collapse:collapse;margin-top:1rem}
 td,th{padding:.55rem .6rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
 th{width:30%}
 .kv{margin:.5rem 0 0;font-size:.92rem}.kv dt{color:var(--acc);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;margin-top:.6rem}.kv dd{margin:.1rem 0 0;color:var(--mut)}
+.card.feat{grid-column:1/-1}.vid{margin:0 0 .9rem}.vid video{width:100%;height:auto;display:block;border-radius:8px;border:1px solid var(--line);background:#000}.vid figcaption{color:var(--mut);font-size:.82rem;margin-top:.4rem}
 .note{color:var(--mut);font-size:.85rem}
 footer{max-width:1000px;margin:auto;padding:2rem 1.2rem;color:var(--mut);font-size:.85rem}
 .gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.6rem;margin-top:.8rem}
@@ -83,6 +84,17 @@ html[lang=pt-BR] [data-l=pt],html[lang=en] [data-l=en]{display:revert}
 <div class="kick"><span data-l="pt">Projetos</span><span data-l="en">Projects</span></div>
 <h2><span data-l="pt">Simuladores e apps</span><span data-l="en">Simulators and apps</span></h2>
 <div class="grid">
+<article class="card feat">
+<figure class="vid"><video id="vcolheita" muted loop playsinline controls preload="none" poster="colheita-poster.jpg" width="1024" height="388"><source src="colheita.mp4" type="video/mp4"></video><figcaption><span data-l="pt">Aula de colheita mecanizada em desenvolvimento (jun/2025): descarga da colheitadeira no caminhão graneleiro em movimento. Gravado no editor da Unity, sem áudio.</span><span data-l="en">Mechanized harvest lesson in development (Jun 2025): the combine unloading into the moving grain truck. Recorded in the Unity editor, no audio.</span></figcaption></figure>
+<span class="tag">Unity · C#</span><span class="tag">2023–2026</span>
+<h3><span data-l="pt">Sistema de treinamento e veículos agrícolas</span><span data-l="en">Training system and agricultural vehicles</span></h3>
+<dl class="kv">
+<dt><span data-l="pt">Contexto</span><span data-l="en">Context</span></dt><dd><span data-l="pt">Sistema de aulas e relatórios do simulador agrícola, usado também como base do código aberto.</span><span data-l="en">Lesson and reporting system of the agricultural simulator, also the base of the open-source code.</span></dd>
+<dt><span data-l="pt">Meu papel</span><span data-l="en">My role</span></dt><dd><span data-l="pt">Assumi o escopo do contrato, dividi em funcionalidades e entreguei com autonomia. Gerenciador de lições, exportação de relatório em PDF (44 revisões), telemetria, menus, seleção em carrossel e gestão de cenas, cerca de 30 scripts autorais. Nos veículos, controladores de colheitadeira, plantadeira e pulverizador (descarga, suspensão, dano) e a mecânica de descarga no caminhão graneleiro do vídeo.</span><span data-l="en">I took on the contract scope, broke it into features and delivered with autonomy. Lesson manager, PDF report export (44 revisions), telemetry, menus, carousel selection and scene management, about 30 authored scripts. On vehicles, combine, planter and sprayer controllers (unloading, suspension, damage) and the grain-truck unloading mechanic shown in the video.</span></dd>
+<dt><span data-l="pt">Stack</span><span data-l="en">Stack</span></dt><dd><span data-l="pt">Unity, C#, iTextSharp, Rewired</span><span data-l="en">Unity, C#, iTextSharp, Rewired</span></dd>
+<dt><span data-l="pt">Resultado</span><span data-l="en">Result</span></dt><dd><span data-l="pt">Cerca de 660 commits somados. Relatório de aula em PDF com gráficos, mapa do trajeto e recomendações.</span><span data-l="en">About 660 commits combined. Lesson PDF report with charts, route map and recommendations.</span></dd>
+</dl>
+<p><a class="btn" href="https://github.com/schaeffergui/unity-training-reports" target="_blank" rel="noopener"><span data-l="pt">Ver código no GitHub (pacote Unity)</span><span data-l="en">View code on GitHub (Unity package)</span></a></p></article>
 <article class="card"><span class="tag">Unity · C#</span><span class="tag">Linha Amarela</span><span class="tag">2026</span>
 <h3><span data-l="pt">Simulador de escavadeira (Linha Amarela)</span><span data-l="en">Excavator simulator (Yellow Line)</span></h3>
 <dl class="kv">
@@ -99,15 +111,6 @@ html[lang=pt-BR] [data-l=pt],html[lang=en] [data-l=en]{display:revert}
 <dt><span data-l="pt">Stack</span><span data-l="en">Stack</span></dt><dd><span data-l="pt">Unity, C#, NUnit</span><span data-l="en">Unity, C#, NUnit</span></dd>
 <dt><span data-l="pt">Resultado</span><span data-l="en">Result</span></dt><dd><span data-l="pt">21 arquivos C# alterados (cerca de 3 mil linhas) em 28 commits.</span><span data-l="en">21 C# files changed (about 3k lines) in 28 commits.</span></dd>
 </dl></article>
-<article class="card"><span class="tag">Unity · C#</span><span class="tag">2023–2026</span>
-<h3><span data-l="pt">Sistema de treinamento e veículos agrícolas</span><span data-l="en">Training system and agricultural vehicles</span></h3>
-<dl class="kv">
-<dt><span data-l="pt">Contexto</span><span data-l="en">Context</span></dt><dd><span data-l="pt">Sistema de aulas e relatórios do simulador agrícola, usado também como base do código aberto.</span><span data-l="en">Lesson and reporting system of the agricultural simulator, also the base of the open-source code.</span></dd>
-<dt><span data-l="pt">Meu papel</span><span data-l="en">My role</span></dt><dd><span data-l="pt">Assumi o escopo do contrato, dividi em funcionalidades e entreguei com autonomia. Gerenciador de lições, exportação de relatório em PDF (44 revisões), telemetria, menus, seleção em carrossel e gestão de cenas, cerca de 30 scripts autorais. Nos veículos, controladores de colheitadeira, plantadeira e pulverizador (descarga, suspensão, dano).</span><span data-l="en">I took on the contract scope, broke it into features and delivered with autonomy. Lesson manager, PDF report export (44 revisions), telemetry, menus, carousel selection and scene management, about 30 authored scripts. On vehicles, combine, planter and sprayer controllers (unloading, suspension, damage).</span></dd>
-<dt><span data-l="pt">Stack</span><span data-l="en">Stack</span></dt><dd><span data-l="pt">Unity, C#, iTextSharp, Rewired</span><span data-l="en">Unity, C#, iTextSharp, Rewired</span></dd>
-<dt><span data-l="pt">Resultado</span><span data-l="en">Result</span></dt><dd><span data-l="pt">Cerca de 660 commits somados. Relatório de aula em PDF com gráficos, mapa do trajeto e recomendações.</span><span data-l="en">About 660 commits combined. Lesson PDF report with charts, route map and recommendations.</span></dd>
-</dl>
-<p><a class="btn" href="https://github.com/schaeffergui/unity-training-reports" target="_blank" rel="noopener"><span data-l="pt">Ver código no GitHub (pacote Unity)</span><span data-l="en">View code on GitHub (Unity package)</span></a></p></article>
 <article class="card"><span class="tag">Unity · C#</span><span class="tag">UI/UX</span><span class="tag">VR</span><span class="tag">2025–2026</span>
 <h3><span data-l="pt">UI/UX, modo VR e navegação por teclado</span><span data-l="en">UI/UX, VR mode and keyboard navigation</span></h3>
 <dl class="kv">
@@ -302,6 +305,11 @@ function run(){
 if(img.complete)run();else img.addEventListener('load',run);
 setTimeout(function(){if(!fig.classList.contains('ready'))done()},7000);
 })();
+</script>
+<script>
+(function(){var v=document.getElementById('vcolheita');if(!v||!('IntersectionObserver' in window))return;
+if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var p=v.play();if(p&&p.catch)p.catch(function(){})}else v.pause()})},{threshold:0.4}).observe(v);})();
 </script>
 </body>
 </html>
