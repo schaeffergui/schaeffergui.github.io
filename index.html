@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Guilherme Schaeffer · Desenvolvedor Unity · Simulação e Apps</title>
-<meta name="description" content="Desenvolvedor Unity/C# focado em simuladores de treinamento agrícolas e de equipamentos pesados, e apps em TypeScript/React.">
+<title>Guilherme Schaeffer · Unity Developer · Simuladores de treinamento</title>
+<meta name="description" content="Unity Developer (C#) em simuladores de treinamento para máquinas agrícolas e pesadas: lógica de aulas, avaliação e relatórios em PDF. Também apps em TypeScript/React.">
 <style>
 :root{--bg:#0c0a0b;--card:#171113;--fg:#f2ebec;--mut:#aa9ba0;--acc:#e63950;--accbg:#a81f34;--line:#2d1b20}
 [data-theme=light]{--bg:#faf6f6;--card:#fff;--fg:#1a1214;--mut:#6a5a5f;--acc:#a81f34;--accbg:#a81f34;--line:#ead9dc}
@@ -36,6 +36,7 @@ h2{font-size:1.6rem;margin:0 0 .3rem}
 table{width:100%;border-collapse:collapse;margin-top:1rem}
 td,th{padding:.55rem .6rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
 th{width:30%}
+.kv{margin:.5rem 0 0;font-size:.92rem}.kv dt{color:var(--acc);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;margin-top:.6rem}.kv dd{margin:.1rem 0 0;color:var(--mut)}
 .note{color:var(--mut);font-size:.85rem}
 footer{max-width:1000px;margin:auto;padding:2rem 1.2rem;color:var(--mut);font-size:.85rem}
 .gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.6rem;margin-top:.8rem}
@@ -58,10 +59,10 @@ html[lang=pt-BR] [data-l=pt],html[lang=en] [data-l=en]{display:revert}
 </nav></header>
 <main>
 <section id="inicio">
-<div class="kick"><span data-l="pt">Simulação de treinamento · Unity · Apps</span><span data-l="en">Training simulation · Unity · Apps</span></div>
+<div class="kick"><span data-l="pt">Unity Developer · Simuladores de treinamento · Linha Amarela e agrícola</span><span data-l="en">Unity Developer · Training simulators · Yellow Line &amp; agricultural</span></div>
 <h1>Guilherme Schaeffer</h1>
-<p class="lead" data-l="pt">Desenvolvedor Unity/C# em simuladores de treinamento para máquinas agrícolas e de construção (colheitadeira, plantadeira, pulverizador, escavadeira). Também construo apps em TypeScript/React para web, desktop (Electron) e Android, com atenção a acessibilidade e segurança.</p>
-<p class="lead" data-l="en">Unity/C# developer working on training simulators for agricultural and construction machinery (combine harvester, planter, sprayer, excavator). I also build TypeScript/React apps for web, desktop (Electron) and Android, with a focus on accessibility and security.</p>
+<p class="lead" data-l="pt">Construo a lógica de aulas e avaliação dos simuladores de Linha Amarela (escavadeira, pá-carregadeira, retroescavadeira e caminhão basculante) e a lógica de aulas e relatórios em PDF dos simuladores agrícolas (colheitadeira, plantadeira, pulverizador), em Unity/C#. Também desenvolvo apps em TypeScript/React para web, desktop e Android.</p>
+<p class="lead" data-l="en">I build the lesson and scoring logic of Yellow Line simulators (excavator, wheel loader, backhoe and dump truck) and the lesson logic and PDF reports of agricultural simulators (combine harvester, planter, sprayer), in Unity/C#. I also build TypeScript/React apps for web, desktop and Android.</p>
 <div class="cta"><a class="btn p" href="#projetos"><span data-l="pt">Ver projetos</span><span data-l="en">See projects</span></a><a class="btn" href="#contato"><span data-l="pt">Contato</span><span data-l="en">Contact</span></a></div>
 <div class="stats">
 <div class="stat"><b>1.346</b><span data-l="pt">commits (sem merges) nas minhas contas, de 2022 a 2026</span><span data-l="en">commits (excluding merges) across my accounts, 2022–2026</span></div>
@@ -70,43 +71,70 @@ html[lang=pt-BR] [data-l=pt],html[lang=en] [data-l=en]{display:revert}
 <div class="stat"><b>211</b><span data-l="pt">commits em ~5 semanas no Life OS, com 90 arquivos TS/TSX criados</span><span data-l="en">commits in ~5 weeks on Life OS, with 90 TS/TSX files created</span></div>
 <div class="stat"><b>2022</b><span data-l="pt">primeiro projeto Unity versionado</span><span data-l="en">first versioned Unity project</span></div>
 </div>
-<p class="note" data-l="pt">Números do histórico git local (inclui commits de stash). Linhas de código não são usadas, pois incluem assets.</p>
-<p class="note" data-l="en">Numbers from local git history (includes stash commits). Line counts are not used because they include assets.</p>
+<p class="note" data-l="pt">Números do histórico git local, sem merges. Linhas de código só aparecem onde foram medidas nos diffs; assets não entram.</p>
+<p class="note" data-l="en">Numbers from local git history, excluding merges. Line counts only appear where they were measured on diffs; assets are excluded.</p>
 </section>
 
 <section id="projetos">
 <div class="kick"><span data-l="pt">Projetos</span><span data-l="en">Projects</span></div>
 <h2><span data-l="pt">Simuladores e apps</span><span data-l="en">Simulators and apps</span></h2>
 <div class="grid">
-<article class="card"><span class="tag">Unity · C#</span><span class="tag">2026</span>
-<h3><span data-l="pt">Simulador de escavadeira</span><span data-l="en">Excavator simulator</span></h3>
-<p data-l="pt">Lógica de lições e avaliação de treinamento em C#: handlers de lição para escavadeira de precisão, ciclo de mina integrado, carregamento de caminhão com pá-carregadeira, caminhão basculante e retroescavadeira. 210 commits em 5 meses, cerca de 28 mil linhas de C# em 112 arquivos, além de colisão da caçamba com a caçamba do caminhão, menu e UI.</p>
-<p data-l="en">Training lesson and grading logic in C#: lesson handlers for precision excavation, an integrated mine cycle, wheel-loader truck loading, dump truck and backhoe. 210 commits over 5 months, about 28k lines of C# across 112 files, plus bucket-to-truck-bed collision, menu and UI.</p></article>
+<article class="card"><span class="tag">Unity · C#</span><span class="tag">Linha Amarela</span><span class="tag">2026</span>
+<h3><span data-l="pt">Simulador de escavadeira (Linha Amarela)</span><span data-l="en">Excavator simulator (Yellow Line)</span></h3>
+<dl class="kv">
+<dt><span data-l="pt">Contexto</span><span data-l="en">Context</span></dt><dd><span data-l="pt">Simulador de treinamento de equipamentos pesados para o cliente SENAI, na empresa.</span><span data-l="en">Heavy-equipment training simulator for the client SENAI, built at the company.</span></dd>
+<dt><span data-l="pt">Meu papel</span><span data-l="en">My role</span></dt><dd><span data-l="pt">Lógica de lições e avaliação em C#: escavadeira de precisão, ciclo de mina integrado, carregamento de caminhão com pá-carregadeira, caminhão basculante e retroescavadeira. Também colisão da caçamba com a caçamba do caminhão, menu e UI.</span><span data-l="en">Lesson and grading logic in C#: precision excavation, integrated mine cycle, wheel-loader truck loading, dump truck and backhoe. Also bucket-to-truck-bed collision, menu and UI.</span></dd>
+<dt><span data-l="pt">Stack</span><span data-l="en">Stack</span></dt><dd><span data-l="pt">Unity, C#</span><span data-l="en">Unity, C#</span></dd>
+<dt><span data-l="pt">Resultado</span><span data-l="en">Result</span></dt><dd><span data-l="pt">5 tipos de aula avaliada. 210 commits em 5 meses, cerca de 28 mil linhas de C# em 112 arquivos.</span><span data-l="en">5 graded lesson types. 210 commits over 5 months, about 28k lines of C# across 112 files.</span></dd>
+</dl></article>
 <article class="card"><span class="tag">Unity · C#</span><span class="tag">2026</span>
 <h3><span data-l="pt">Simulador agrícola</span><span data-l="en">Agricultural simulator</span></h3>
-<p data-l="pt">21 arquivos C# alterados (cerca de 3 mil linhas): relatório de lição e UI de tarefas, pontuação de operações pela área do implemento com testes automatizados, rastreio de zona de plantio, seleção de máquina em carrossel e ferramenta de editor para a vegetação da fazenda. Também colheitadeira L500 com plataforma de 35 pés e personalização visual de veículos. 28 commits.</p>
-<p data-l="en">21 C# files changed (about 3k lines): lesson report and task UI, operation scoring by implement footprint with automated tests, planting-zone tracking, carousel machine selection and an editor tool for farm vegetation. Also the L500 combine with 35-ft header and vehicle visual customization. 28 commits.</p></article>
+<dl class="kv">
+<dt><span data-l="pt">Contexto</span><span data-l="en">Context</span></dt><dd><span data-l="pt">Simulador de máquinas agrícolas do programa AGRO 4.0 (Finep).</span><span data-l="en">Agricultural machinery simulator from the AGRO 4.0 program (Finep).</span></dd>
+<dt><span data-l="pt">Meu papel</span><span data-l="en">My role</span></dt><dd><span data-l="pt">Relatório de lição e UI de tarefas, pontuação de operações pela área do implemento com testes automatizados, rastreio de zona de plantio, seleção de máquina em carrossel, ferramenta de editor para a vegetação da fazenda, colheitadeira L500 com plataforma de 35 pés e personalização visual de veículos.</span><span data-l="en">Lesson report and task UI, operation scoring by implement footprint with automated tests, planting-zone tracking, carousel machine selection, an editor tool for farm vegetation, the L500 combine with 35-ft header and vehicle visual customization.</span></dd>
+<dt><span data-l="pt">Stack</span><span data-l="en">Stack</span></dt><dd><span data-l="pt">Unity, C#, NUnit</span><span data-l="en">Unity, C#, NUnit</span></dd>
+<dt><span data-l="pt">Resultado</span><span data-l="en">Result</span></dt><dd><span data-l="pt">21 arquivos C# alterados (cerca de 3 mil linhas) em 28 commits.</span><span data-l="en">21 C# files changed (about 3k lines) in 28 commits.</span></dd>
+</dl></article>
 <article class="card"><span class="tag">Unity · C#</span><span class="tag">2023–2026</span>
 <h3><span data-l="pt">Sistema de treinamento e veículos agrícolas</span><span data-l="en">Training system and agricultural vehicles</span></h3>
-<p data-l="pt">Sistema de treinamento do simulador: gerenciador de lições, exportação de relatório em PDF (44 revisões), telemetria, menus, seleção em carrossel e gestão de cenas, cerca de 30 scripts autorais. Nos veículos, controladores de colheitadeira, plantadeira e pulverizador (descarga, suspensão, dano). Cerca de 660 commits somados.</p>
-<p data-l="en">Simulator training system: lesson manager, PDF report export (44 revisions), telemetry, menus, carousel selection and scene management, about 30 authored scripts. On vehicles, combine, planter and sprayer controllers (unloading, suspension, damage). About 660 commits combined.</p>
+<dl class="kv">
+<dt><span data-l="pt">Contexto</span><span data-l="en">Context</span></dt><dd><span data-l="pt">Sistema de aulas e relatórios do simulador agrícola, usado também como base do código aberto.</span><span data-l="en">Lesson and reporting system of the agricultural simulator, also the base of the open-source code.</span></dd>
+<dt><span data-l="pt">Meu papel</span><span data-l="en">My role</span></dt><dd><span data-l="pt">Gerenciador de lições, exportação de relatório em PDF (44 revisões), telemetria, menus, seleção em carrossel e gestão de cenas, cerca de 30 scripts autorais. Nos veículos, controladores de colheitadeira, plantadeira e pulverizador (descarga, suspensão, dano).</span><span data-l="en">Lesson manager, PDF report export (44 revisions), telemetry, menus, carousel selection and scene management, about 30 authored scripts. On vehicles, combine, planter and sprayer controllers (unloading, suspension, damage).</span></dd>
+<dt><span data-l="pt">Stack</span><span data-l="en">Stack</span></dt><dd><span data-l="pt">Unity, C#, iTextSharp, Rewired</span><span data-l="en">Unity, C#, iTextSharp, Rewired</span></dd>
+<dt><span data-l="pt">Resultado</span><span data-l="en">Result</span></dt><dd><span data-l="pt">Cerca de 660 commits somados. Relatório de aula em PDF com gráficos, mapa do trajeto e recomendações.</span><span data-l="en">About 660 commits combined. Lesson PDF report with charts, route map and recommendations.</span></dd>
+</dl>
 <p><a class="btn" href="https://github.com/schaeffergui/unity-training-reports" target="_blank" rel="noopener"><span data-l="pt">Ver código no GitHub (pacote Unity)</span><span data-l="en">View code on GitHub (Unity package)</span></a></p></article>
 <article class="card"><span class="tag">Unity · C#</span><span class="tag">Level design</span><span class="tag">2024–2025</span>
 <h3><span data-l="pt">Simulador de cidade e estradas (rdv6)</span><span data-l="en">City and roads simulator (rdv6)</span></h3>
-<p data-l="pt">Ambientação e level design: terreno, vegetação com LOD e billboards, estradas, aeroporto, túneis com iluminação e colisores, cidade rural, tráfego com IA de ônibus e caminhão, cruzamentos ferroviários e tombador de grãos. 210 commits em 6 meses (pico em janeiro de 2025), cerca de 19% do projeto. Código autoral pequeno: 6 scripts (trem, cruzamento, tombador).</p>
-<p data-l="en">Environment and level design: terrain, vegetation with LOD and billboards, roads, airport, tunnels with lighting and colliders, rural town, bus and truck AI traffic, railway crossings and a grain dump platform. 210 commits over 6 months (peak in January 2025), about 19% of the project. Small authored code: 6 scripts (train, crossing, grain dump).</p></article>
+<dl class="kv">
+<dt><span data-l="pt">Contexto</span><span data-l="en">Context</span></dt><dd><span data-l="pt">Cenário de simulação de direção com cidade, estradas e aeroporto.</span><span data-l="en">Driving simulation environment with a town, roads and an airport.</span></dd>
+<dt><span data-l="pt">Meu papel</span><span data-l="en">My role</span></dt><dd><span data-l="pt">Ambientação e level design: terreno, vegetação com LOD e billboards, estradas, aeroporto, túneis com iluminação e colisores, cidade rural, tráfego com IA de ônibus e caminhão, cruzamentos ferroviários e tombador de grãos. Código autoral pequeno: 6 scripts (trem, cruzamento, tombador).</span><span data-l="en">Environment and level design: terrain, vegetation with LOD and billboards, roads, airport, tunnels with lighting and colliders, rural town, bus and truck AI traffic, railway crossings and a grain dump platform. Small authored code: 6 scripts (train, crossing, grain dump).</span></dd>
+<dt><span data-l="pt">Stack</span><span data-l="en">Stack</span></dt><dd><span data-l="pt">Unity, C#</span><span data-l="en">Unity, C#</span></dd>
+<dt><span data-l="pt">Resultado</span><span data-l="en">Result</span></dt><dd><span data-l="pt">210 commits em 6 meses (pico em janeiro de 2025), cerca de 19% do projeto.</span><span data-l="en">210 commits over 6 months (peak in January 2025), about 19% of the project.</span></dd>
+</dl></article>
 <article class="card"><span class="tag">TypeScript · React</span><span class="tag">Electron · Android</span>
-<h3>Life OS</h3>
-<p data-l="pt">App pessoal multiplataforma: web, Electron (Windows) e Android com localização. Revisão visual, correções de contraste e animações (acessibilidade) e auditoria de segurança no CI. 211 commits, 40 mil linhas de TS/TSX adicionadas.</p>
-<p data-l="en">Personal cross-platform app: web, Electron (Windows) and localized Android. Visual refresh, contrast/animation accessibility fixes and CI security audit. 211 commits, 40k lines of TS/TSX added.</p></article>
+<h3><span data-l="pt">Life OS</span><span data-l="en">Life OS</span></h3>
+<dl class="kv">
+<dt><span data-l="pt">Contexto</span><span data-l="en">Context</span></dt><dd><span data-l="pt">App pessoal multiplataforma.</span><span data-l="en">Personal cross-platform app.</span></dd>
+<dt><span data-l="pt">Meu papel</span><span data-l="en">My role</span></dt><dd><span data-l="pt">Desenvolvimento solo: revisão visual, correções de contraste e animações (acessibilidade) e auditoria de segurança no CI.</span><span data-l="en">Solo development: visual refresh, contrast and animation accessibility fixes and CI security audit.</span></dd>
+<dt><span data-l="pt">Stack</span><span data-l="en">Stack</span></dt><dd><span data-l="pt">TypeScript, React, Electron, Android</span><span data-l="en">TypeScript, React, Electron, Android</span></dd>
+<dt><span data-l="pt">Resultado</span><span data-l="en">Result</span></dt><dd><span data-l="pt">Web, Windows (Electron) e Android com localização. 211 commits, 40 mil linhas de TS/TSX adicionadas.</span><span data-l="en">Web, Windows (Electron) and localized Android. 211 commits, 40k lines of TS/TSX added.</span></dd>
+</dl></article>
 <article class="card"><span class="tag">Unity · C#</span><span class="tag">2025–2026</span>
-<h3>RDLesson</h3>
-<p data-l="pt">Contribuições ao pacote de lições: gerenciador de UI, banco de dados e controlador de relatório. 9 commits, cerca de 170 linhas em 5 arquivos.</p>
-<p data-l="en">Contributions to the lessons package: UI manager, database and report controller. 9 commits, about 170 lines across 5 files.</p></article>
+<h3><span data-l="pt">RDLesson</span><span data-l="en">RDLesson</span></h3>
+<dl class="kv">
+<dt><span data-l="pt">Contexto</span><span data-l="en">Context</span></dt><dd><span data-l="pt">Pacote interno de lições usado pelos simuladores.</span><span data-l="en">Internal lessons package used by the simulators.</span></dd>
+<dt><span data-l="pt">Meu papel</span><span data-l="en">My role</span></dt><dd><span data-l="pt">Contribuições pontuais: gerenciador de UI, banco de dados e controlador de relatório.</span><span data-l="en">Targeted contributions: UI manager, database and report controller.</span></dd>
+<dt><span data-l="pt">Stack</span><span data-l="en">Stack</span></dt><dd><span data-l="pt">Unity, C#</span><span data-l="en">Unity, C#</span></dd>
+<dt><span data-l="pt">Resultado</span><span data-l="en">Result</span></dt><dd><span data-l="pt">9 commits, cerca de 170 linhas em 5 arquivos.</span><span data-l="en">9 commits, about 170 lines across 5 files.</span></dd>
+</dl></article>
 <article class="card"><span class="tag">Unity</span><span class="tag">2022</span>
 <h3><span data-l="pt">Jogo 3D de sobrevivência</span><span data-l="en">3D survival game</span></h3>
-<p data-l="pt">Meu primeiro projeto: personagem animado, câmera, inventário, coleta de itens, chuva, fogo e iluminação.</p>
-<p data-l="en">My first project: animated character, camera, inventory, item pickup, rain, fire and lighting.</p></article>
+<dl class="kv">
+<dt><span data-l="pt">Contexto</span><span data-l="en">Context</span></dt><dd><span data-l="pt">Meu primeiro projeto Unity.</span><span data-l="en">My first Unity project.</span></dd>
+<dt><span data-l="pt">Meu papel</span><span data-l="en">My role</span></dt><dd><span data-l="pt">Projeto individual: personagem animado, câmera, inventário, coleta de itens, chuva, fogo e iluminação.</span><span data-l="en">Solo project: animated character, camera, inventory, item pickup, rain, fire and lighting.</span></dd>
+<dt><span data-l="pt">Stack</span><span data-l="en">Stack</span></dt><dd><span data-l="pt">Unity, C#</span><span data-l="en">Unity, C#</span></dd>
+</dl></article>
 </div>
 </section>
 
