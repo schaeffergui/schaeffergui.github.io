@@ -67,7 +67,7 @@ html[lang=pt-BR] [data-l=pt],html[lang=en] [data-l=en]{display:revert}
 <p class="lead" data-l="en">I build the lesson and scoring logic of Yellow Line simulators (excavator, wheel loader, backhoe and dump truck) and the lesson logic and PDF reports of agricultural simulators (combine harvester, planter, sprayer), in Unity/C#, plus UI, keyboard navigation and VR mode. I also build TypeScript/React apps for web, desktop and Android.</p>
 <div class="cta"><a class="btn p" href="#projetos"><span data-l="pt">Ver projetos</span><span data-l="en">See projects</span></a><a class="btn" href="#contato"><span data-l="pt">Contato</span><span data-l="en">Contact</span></a></div>
 </div>
-<figure class="portrait"><img id="pimg" src="portrait.jpg?v=5" width="520" height="520" alt="Retrato de Guilherme Schaeffer, de óculos e terno bordô, sorrindo"><canvas id="pdots" aria-hidden="true"></canvas></figure></div>
+<figure class="portrait"><img id="pimg" src="portrait.jpg?v=6" width="520" height="520" alt="Retrato de Guilherme Schaeffer, de óculos e terno bordô, sorrindo"><canvas id="pdots" aria-hidden="true"></canvas></figure></div>
 <div class="stats">
 <div class="stat"><b>1.346</b><span data-l="pt">commits (sem merges) nas minhas contas, de 2022 a 2026</span><span data-l="en">commits (excluding merges) across my accounts, 2022–2026</span></div>
 <div class="stat"><b>700+</b><span data-l="pt">commits no GitLab da empresa, ago/2025 a nov/2026</span><span data-l="en">commits on the company GitLab, Aug 2025 to Nov 2026</span></div>
@@ -270,22 +270,26 @@ if(!fig||!img||!cv)return;
 function done(){fig.classList.add('ready')}
 if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){done();return}
 function run(){
- var S=fig.clientWidth||300,dpr=Math.max(2,Math.min(window.devicePixelRatio||1,3)),N=150,cell=S/N;
- cv.width=cv.height=Math.round(S*dpr);var c=cv.getContext('2d');c.scale(dpr,dpr);
+ var S=fig.clientWidth||300,dp=window.devicePixelRatio||1,dev=Math.round(S*dp),cd=Math.max(2,Math.round(dev/150)),N=Math.floor(dev/cd),ss=dp<2?2:1,cell=cd*ss,B=N*cell,css=N*cd/dp;
+ cv.width=cv.height=B;cv.style.width=cv.style.height=css+'px';cv.style.left=cv.style.top=((S-css)/2)+'px';cv.style.right=cv.style.bottom='auto';
+ var c=cv.getContext('2d');
  var o=document.createElement('canvas');o.width=o.height=N;var oc=o.getContext('2d');
  try{oc.drawImage(img,0,0,N,N);var d=oc.getImageData(0,0,N,N).data}catch(e){done();return}
- var L=[],lo=1,hi=0,i,x,y;
- for(i=0;i<N*N;i++){var l=(0.5*d[i*4]+0.4*d[i*4+1]+0.1*d[i*4+2])/255;L.push(l);if(l<lo)lo=l;if(l>hi)hi=l}
+ var L=[],i,x,y;
+ for(i=0;i<N*N;i++)L.push((0.45*d[i*4]+0.45*d[i*4+1]+0.1*d[i*4+2])/255);
+ var so=L.slice().sort(function(a,b){return a-b}),lo=so[Math.floor(so.length*0.01)],hi=so[Math.floor(so.length*0.995)];
+ var R=[[0,12,10,11],[0.10,38,8,15],[0.28,86,12,31],[0.52,168,31,52],[0.78,230,57,80],[1,255,150,160]];
+ function tone(v){for(var q=0;q<R.length-1;q++){var A=R[q],Z=R[q+1];if(v<=Z[0]){var k=(v-A[0])/(Z[0]-A[0]);
+  return 'rgb('+Math.round(A[1]+(Z[1]-A[1])*k)+','+Math.round(A[2]+(Z[2]-A[2])*k)+','+Math.round(A[3]+(Z[3]-A[3])*k)+')'}}return 'rgb(255,150,160)'}
  var dots=[];
- for(y=0;y<N;y++)for(x=0;x<N;x++){var v=(L[y*N+x]-lo)/((hi-lo)||1),dx=(x+.5)/N-.5,dy=(y+.5)/N-.42,rr=Math.sqrt(dx*dx+dy*dy);
-  v*=Math.max(0,1-0.7*Math.max(0,rr-0.22)/0.5);v=Math.pow(v,1.35);
-  if(v<0.05)continue;
-  dots.push({x:(x+.5)*cell,y:(y+.5)*cell,s:(0.15+0.85*v)*cell*0.56,
-   col:'rgb('+Math.round(86+154*v)+','+Math.round(12+58*v)+','+Math.round(31+59*v)+')',
+ for(y=0;y<N;y++)for(x=0;x<N;x++){var v=Math.min(1,Math.max(0,(L[y*N+x]-lo)/((hi-lo)||1))),dx=(x+.5)/N-.5,dy=(y+.5)/N-.42,rr=Math.sqrt(dx*dx+dy*dy);
+  v*=Math.max(0,1-0.55*Math.max(0,rr-0.25)/0.5);v=Math.pow(v,0.95);
+  if(v<0.03)continue;
+  dots.push({x:(x+.5)*cell,y:(y+.5)*cell,s:(0.55+0.45*Math.pow(v,0.6))*cell*0.52,col:tone(v),
    dl:Math.random()*0.62+(y/N)*0.1,f:0})}
  dots.sort(function(a,b){return a.dl-b.dl});
- c.fillStyle='#0c0a0b';c.fillRect(0,0,S,S);
- var t0=performance.now(),DUR=2800,HOLD=800,first=0,ended=0;
+ c.fillStyle='#0c0a0b';c.fillRect(0,0,B,B);
+ var t0=performance.now(),DUR=2800,HOLD=900,first=0,ended=0;
  (function f(now){
   var t=(now-t0)/DUR;
   while(first<dots.length&&dots[first].f)first++;
