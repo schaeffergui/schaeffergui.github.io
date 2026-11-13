@@ -26,6 +26,7 @@ h2{font-size:1.6rem;margin:0 0 .3rem}
 .cta{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.4rem}
 .btn{display:inline-block;padding:.6rem 1.1rem;border-radius:8px;border:1px solid var(--acc);text-decoration:none;color:var(--fg)}
 .btn.p{background:var(--accbg);border-color:var(--accbg);color:#fff;font-weight:600}
+.hero{display:flex;gap:2rem;align-items:center;flex-wrap:wrap}.hero-text{flex:1 1 380px;min-width:0}.portrait{margin:0;position:relative;width:min(300px,70vw);aspect-ratio:1;flex:0 0 auto;border-radius:50%;border:3px solid var(--acc);box-shadow:0 0 0 6px var(--card),0 10px 40px rgba(168,31,52,.35);overflow:hidden;background:var(--card)}.portrait img,.portrait canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}.portrait img{opacity:0;transition:opacity .9s ease}.portrait.ready img{opacity:1}.portrait canvas{transition:opacity .9s ease}.portrait.ready canvas{opacity:0}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:2rem}
 .stat,.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1.1rem}
 .stat b{font-size:1.8rem;color:var(--acc);display:block}
@@ -59,11 +60,14 @@ html[lang=pt-BR] [data-l=pt],html[lang=en] [data-l=en]{display:revert}
 </nav></header>
 <main>
 <section id="inicio">
+<div class="hero"><div class="hero-text">
 <div class="kick"><span data-l="pt">Unity Developer · Simuladores de treinamento · VR · Linha Amarela e agrícola</span><span data-l="en">Unity Developer · Training simulators · VR · Yellow Line &amp; agricultural</span></div>
 <h1>Guilherme Schaeffer</h1>
 <p class="lead" data-l="pt">Construo a lógica de aulas e avaliação dos simuladores de Linha Amarela (escavadeira, pá-carregadeira, retroescavadeira e caminhão basculante) e a lógica de aulas e relatórios em PDF dos simuladores agrícolas (colheitadeira, plantadeira, pulverizador), em Unity/C#, além de interface, navegação por teclado e modo VR. Também desenvolvo apps em TypeScript/React para web, desktop e Android.</p>
 <p class="lead" data-l="en">I build the lesson and scoring logic of Yellow Line simulators (excavator, wheel loader, backhoe and dump truck) and the lesson logic and PDF reports of agricultural simulators (combine harvester, planter, sprayer), in Unity/C#, plus UI, keyboard navigation and VR mode. I also build TypeScript/React apps for web, desktop and Android.</p>
 <div class="cta"><a class="btn p" href="#projetos"><span data-l="pt">Ver projetos</span><span data-l="en">See projects</span></a><a class="btn" href="#contato"><span data-l="pt">Contato</span><span data-l="en">Contact</span></a></div>
+</div>
+<figure class="portrait"><img id="pimg" src="portrait.jpg" width="520" height="520" alt="Retrato de Guilherme Schaeffer, de óculos e terno bordô, sorrindo"><canvas id="pdots" aria-hidden="true"></canvas></figure></div>
 <div class="stats">
 <div class="stat"><b>1.346</b><span data-l="pt">commits (sem merges) nas minhas contas, de 2022 a 2026</span><span data-l="en">commits (excluding merges) across my accounts, 2022–2026</span></div>
 <div class="stat"><b>700+</b><span data-l="pt">commits no GitLab da empresa, ago/2025 a nov/2026</span><span data-l="en">commits on the company GitLab, Aug 2025 to Nov 2026</span></div>
@@ -167,45 +171,45 @@ html[lang=pt-BR] [data-l=pt],html[lang=en] [data-l=en]{display:revert}
 <p class="note" data-l="en">Images of simulators I worked on, in the development environment. Click to enlarge.</p>
 <h3 style="margin-top:1.6rem"><span data-l="pt">Cenários: estradas, terreno e vegetação</span><span data-l="en">Scenery: roads, terrain and vegetation</span></h3>
 <div class="gal">
-<a href="media/cen-01.jpg" target="_blank" rel="noopener"><img src="media/cen-01.jpg" loading="lazy" alt="Cenário de simulação 1"></a>
-<a href="media/cen-02.jpg" target="_blank" rel="noopener"><img src="media/cen-02.jpg" loading="lazy" alt="Cenário de simulação 2"></a>
-<a href="media/cen-03.jpg" target="_blank" rel="noopener"><img src="media/cen-03.jpg" loading="lazy" alt="Cenário de simulação 3"></a>
-<a href="media/cen-04.jpg" target="_blank" rel="noopener"><img src="media/cen-04.jpg" loading="lazy" alt="Cenário de simulação 4"></a>
-<a href="media/cen-05.jpg" target="_blank" rel="noopener"><img src="media/cen-05.jpg" loading="lazy" alt="Cenário de simulação 5"></a>
-<a href="media/cen-06.jpg" target="_blank" rel="noopener"><img src="media/cen-06.jpg" loading="lazy" alt="Cenário de simulação 6"></a>
-<a href="media/cen-07.jpg" target="_blank" rel="noopener"><img src="media/cen-07.jpg" loading="lazy" alt="Cenário de simulação 7"></a>
+<a href="cen-01.jpg" target="_blank" rel="noopener"><img src="cen-01.jpg" loading="lazy" alt="Cenário de simulação 1"></a>
+<a href="cen-02.jpg" target="_blank" rel="noopener"><img src="cen-02.jpg" loading="lazy" alt="Cenário de simulação 2"></a>
+<a href="cen-03.jpg" target="_blank" rel="noopener"><img src="cen-03.jpg" loading="lazy" alt="Cenário de simulação 3"></a>
+<a href="cen-04.jpg" target="_blank" rel="noopener"><img src="cen-04.jpg" loading="lazy" alt="Cenário de simulação 4"></a>
+<a href="cen-05.jpg" target="_blank" rel="noopener"><img src="cen-05.jpg" loading="lazy" alt="Cenário de simulação 5"></a>
+<a href="cen-06.jpg" target="_blank" rel="noopener"><img src="cen-06.jpg" loading="lazy" alt="Cenário de simulação 6"></a>
+<a href="cen-07.jpg" target="_blank" rel="noopener"><img src="cen-07.jpg" loading="lazy" alt="Cenário de simulação 7"></a>
 </div>
 <h3 style="margin-top:1.6rem"><span data-l="pt">Simulador agrícola</span><span data-l="en">Agricultural simulator</span></h3>
 <div class="gal">
-<a href="media/agro-01.jpg" target="_blank" rel="noopener"><img src="media/agro-01.jpg" loading="lazy" alt="Simulador agrícola 1"></a>
-<a href="media/agro-02.jpg" target="_blank" rel="noopener"><img src="media/agro-02.jpg" loading="lazy" alt="Simulador agrícola 2"></a>
-<a href="media/agro-03.jpg" target="_blank" rel="noopener"><img src="media/agro-03.jpg" loading="lazy" alt="Simulador agrícola 3"></a>
-<a href="media/agro-04.jpg" target="_blank" rel="noopener"><img src="media/agro-04.jpg" loading="lazy" alt="Simulador agrícola 4"></a>
-<a href="media/agro-05.jpg" target="_blank" rel="noopener"><img src="media/agro-05.jpg" loading="lazy" alt="Simulador agrícola 5"></a>
-<a href="media/agro-06.jpg" target="_blank" rel="noopener"><img src="media/agro-06.jpg" loading="lazy" alt="Simulador agrícola 6"></a>
-<a href="media/agro-07.jpg" target="_blank" rel="noopener"><img src="media/agro-07.jpg" loading="lazy" alt="Simulador agrícola 7"></a>
-<a href="media/agro-08.jpg" target="_blank" rel="noopener"><img src="media/agro-08.jpg" loading="lazy" alt="Simulador agrícola 8"></a>
-<a href="media/agro-09.jpg" target="_blank" rel="noopener"><img src="media/agro-09.jpg" loading="lazy" alt="Simulador agrícola 9"></a>
-<a href="media/agro-10.jpg" target="_blank" rel="noopener"><img src="media/agro-10.jpg" loading="lazy" alt="Simulador agrícola 10"></a>
-<a href="media/agro-11.jpg" target="_blank" rel="noopener"><img src="media/agro-11.jpg" loading="lazy" alt="Simulador agrícola 11"></a>
-<a href="media/agro-12.jpg" target="_blank" rel="noopener"><img src="media/agro-12.jpg" loading="lazy" alt="Simulador agrícola 12"></a>
-<a href="media/agro-13.jpg" target="_blank" rel="noopener"><img src="media/agro-13.jpg" loading="lazy" alt="Simulador agrícola 13"></a>
-<a href="media/agro-14.jpg" target="_blank" rel="noopener"><img src="media/agro-14.jpg" loading="lazy" alt="Simulador agrícola 14"></a>
+<a href="agro-01.jpg" target="_blank" rel="noopener"><img src="agro-01.jpg" loading="lazy" alt="Simulador agrícola 1"></a>
+<a href="agro-02.jpg" target="_blank" rel="noopener"><img src="agro-02.jpg" loading="lazy" alt="Simulador agrícola 2"></a>
+<a href="agro-03.jpg" target="_blank" rel="noopener"><img src="agro-03.jpg" loading="lazy" alt="Simulador agrícola 3"></a>
+<a href="agro-04.jpg" target="_blank" rel="noopener"><img src="agro-04.jpg" loading="lazy" alt="Simulador agrícola 4"></a>
+<a href="agro-05.jpg" target="_blank" rel="noopener"><img src="agro-05.jpg" loading="lazy" alt="Simulador agrícola 5"></a>
+<a href="agro-06.jpg" target="_blank" rel="noopener"><img src="agro-06.jpg" loading="lazy" alt="Simulador agrícola 6"></a>
+<a href="agro-07.jpg" target="_blank" rel="noopener"><img src="agro-07.jpg" loading="lazy" alt="Simulador agrícola 7"></a>
+<a href="agro-08.jpg" target="_blank" rel="noopener"><img src="agro-08.jpg" loading="lazy" alt="Simulador agrícola 8"></a>
+<a href="agro-09.jpg" target="_blank" rel="noopener"><img src="agro-09.jpg" loading="lazy" alt="Simulador agrícola 9"></a>
+<a href="agro-10.jpg" target="_blank" rel="noopener"><img src="agro-10.jpg" loading="lazy" alt="Simulador agrícola 10"></a>
+<a href="agro-11.jpg" target="_blank" rel="noopener"><img src="agro-11.jpg" loading="lazy" alt="Simulador agrícola 11"></a>
+<a href="agro-12.jpg" target="_blank" rel="noopener"><img src="agro-12.jpg" loading="lazy" alt="Simulador agrícola 12"></a>
+<a href="agro-13.jpg" target="_blank" rel="noopener"><img src="agro-13.jpg" loading="lazy" alt="Simulador agrícola 13"></a>
+<a href="agro-14.jpg" target="_blank" rel="noopener"><img src="agro-14.jpg" loading="lazy" alt="Simulador agrícola 14"></a>
 </div>
 <h3 style="margin-top:1.6rem"><span data-l="pt">Simulador de escavadeira e equipamentos pesados</span><span data-l="en">Excavator and heavy-equipment simulator</span></h3>
 <div class="gal">
-<a href="media/esc-01.jpg" target="_blank" rel="noopener"><img src="media/esc-01.jpg" loading="lazy" alt="Simulador de equipamentos pesados 1"></a>
-<a href="media/esc-02.jpg" target="_blank" rel="noopener"><img src="media/esc-02.jpg" loading="lazy" alt="Simulador de equipamentos pesados 2"></a>
-<a href="media/esc-03.jpg" target="_blank" rel="noopener"><img src="media/esc-03.jpg" loading="lazy" alt="Simulador de equipamentos pesados 3"></a>
-<a href="media/esc-04.jpg" target="_blank" rel="noopener"><img src="media/esc-04.jpg" loading="lazy" alt="Simulador de equipamentos pesados 4"></a>
-<a href="media/esc-05.jpg" target="_blank" rel="noopener"><img src="media/esc-05.jpg" loading="lazy" alt="Simulador de equipamentos pesados 5"></a>
-<a href="media/esc-06.jpg" target="_blank" rel="noopener"><img src="media/esc-06.jpg" loading="lazy" alt="Simulador de equipamentos pesados 6"></a>
-<a href="media/esc-07.jpg" target="_blank" rel="noopener"><img src="media/esc-07.jpg" loading="lazy" alt="Simulador de equipamentos pesados 7"></a>
-<a href="media/esc-08.jpg" target="_blank" rel="noopener"><img src="media/esc-08.jpg" loading="lazy" alt="Simulador de equipamentos pesados 8"></a>
-<a href="media/esc-09.jpg" target="_blank" rel="noopener"><img src="media/esc-09.jpg" loading="lazy" alt="Simulador de equipamentos pesados 9"></a>
-<a href="media/esc-10.jpg" target="_blank" rel="noopener"><img src="media/esc-10.jpg" loading="lazy" alt="Simulador de equipamentos pesados 10"></a>
-<a href="media/esc-11.jpg" target="_blank" rel="noopener"><img src="media/esc-11.jpg" loading="lazy" alt="Simulador de equipamentos pesados 11"></a>
-<a href="media/esc-12.jpg" target="_blank" rel="noopener"><img src="media/esc-12.jpg" loading="lazy" alt="Simulador de equipamentos pesados 12"></a>
+<a href="esc-01.jpg" target="_blank" rel="noopener"><img src="esc-01.jpg" loading="lazy" alt="Simulador de equipamentos pesados 1"></a>
+<a href="esc-02.jpg" target="_blank" rel="noopener"><img src="esc-02.jpg" loading="lazy" alt="Simulador de equipamentos pesados 2"></a>
+<a href="esc-03.jpg" target="_blank" rel="noopener"><img src="esc-03.jpg" loading="lazy" alt="Simulador de equipamentos pesados 3"></a>
+<a href="esc-04.jpg" target="_blank" rel="noopener"><img src="esc-04.jpg" loading="lazy" alt="Simulador de equipamentos pesados 4"></a>
+<a href="esc-05.jpg" target="_blank" rel="noopener"><img src="esc-05.jpg" loading="lazy" alt="Simulador de equipamentos pesados 5"></a>
+<a href="esc-06.jpg" target="_blank" rel="noopener"><img src="esc-06.jpg" loading="lazy" alt="Simulador de equipamentos pesados 6"></a>
+<a href="esc-07.jpg" target="_blank" rel="noopener"><img src="esc-07.jpg" loading="lazy" alt="Simulador de equipamentos pesados 7"></a>
+<a href="esc-08.jpg" target="_blank" rel="noopener"><img src="esc-08.jpg" loading="lazy" alt="Simulador de equipamentos pesados 8"></a>
+<a href="esc-09.jpg" target="_blank" rel="noopener"><img src="esc-09.jpg" loading="lazy" alt="Simulador de equipamentos pesados 9"></a>
+<a href="esc-10.jpg" target="_blank" rel="noopener"><img src="esc-10.jpg" loading="lazy" alt="Simulador de equipamentos pesados 10"></a>
+<a href="esc-11.jpg" target="_blank" rel="noopener"><img src="esc-11.jpg" loading="lazy" alt="Simulador de equipamentos pesados 11"></a>
+<a href="esc-12.jpg" target="_blank" rel="noopener"><img src="esc-12.jpg" loading="lazy" alt="Simulador de equipamentos pesados 12"></a>
 </div>
 </section>
 
@@ -258,6 +262,32 @@ const h=document.documentElement,g=id=>document.getElementById(id);
 function L(l){h.lang=l==='pt'?'pt-BR':'en';g('pt').setAttribute('aria-pressed',l==='pt');g('en').setAttribute('aria-pressed',l==='en')}
 g('pt').onclick=()=>L('pt');g('en').onclick=()=>L('en');
 g('th').onclick=()=>{h.dataset.theme=h.dataset.theme==='dark'?'light':'dark'};
+</script>
+<script>
+(function(){
+var fig=document.querySelector('.portrait'),img=document.getElementById('pimg'),cv=document.getElementById('pdots');
+if(!fig||!img||!cv)return;
+function done(){fig.classList.add('ready')}
+if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){done();return}
+function run(){
+ var S=300,dpr=Math.min(window.devicePixelRatio||1,2),N=36,cell=S/N;
+ cv.width=cv.height=S*dpr;var c=cv.getContext('2d');c.scale(dpr,dpr);
+ var o=document.createElement('canvas');o.width=o.height=N;var oc=o.getContext('2d');
+ try{oc.drawImage(img,0,0,N,N);var d=oc.getImageData(0,0,N,N).data}catch(e){done();return}
+ var dots=[];
+ for(var y=0;y<N;y++)for(var x=0;x<N;x++){var i=(y*N+x)*4,r=d[i],g=d[i+1],b=d[i+2],l=(0.2126*r+0.7152*g+0.0722*b)/255;
+  dots.push({x:(x+.5)*cell,y:(y+.5)*cell,r:r,g:g,b:b,s:(0.25+0.75*l)*cell*0.62,dl:(x+y)/(2*N)*0.5+Math.random()*0.12})}
+ var t0=performance.now(),DUR=2200;
+ (function f(now){
+  var t=(now-t0)/DUR;c.clearRect(0,0,S,S);
+  dots.forEach(function(p){var k=Math.max(0,Math.min(1,(t-p.dl)/0.45));k=1-Math.pow(1-k,3);
+   c.fillStyle='rgb('+p.r+','+p.g+','+p.b+')';c.beginPath();c.arc(p.x,p.y,p.s*k,0,6.2832);c.fill()});
+  if(t<1)requestAnimationFrame(f);else done();
+ })(t0);
+}
+if(img.complete)run();else img.addEventListener('load',run);
+setTimeout(function(){if(!fig.classList.contains('ready'))done()},4500);
+})();
 </script>
 </body>
 </html>
