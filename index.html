@@ -67,7 +67,7 @@ html[lang=pt-BR] [data-l=pt],html[lang=en] [data-l=en]{display:revert}
 <p class="lead" data-l="en">I build the lesson and scoring logic of Yellow Line simulators (excavator, wheel loader, backhoe and dump truck) and the lesson logic and PDF reports of agricultural simulators (combine harvester, planter, sprayer), in Unity/C#, plus UI, keyboard navigation and VR mode. I also build TypeScript/React apps for web, desktop and Android.</p>
 <div class="cta"><a class="btn p" href="#projetos"><span data-l="pt">Ver projetos</span><span data-l="en">See projects</span></a><a class="btn" href="#contato"><span data-l="pt">Contato</span><span data-l="en">Contact</span></a></div>
 </div>
-<figure class="portrait"><img id="pimg" src="portrait.jpg?v=2" width="520" height="520" alt="Retrato de Guilherme Schaeffer, de óculos e terno bordô, sorrindo"><canvas id="pdots" aria-hidden="true"></canvas></figure></div>
+<figure class="portrait"><img id="pimg" src="portrait.jpg?v=4" width="520" height="520" alt="Retrato de Guilherme Schaeffer, de óculos e terno bordô, sorrindo"><canvas id="pdots" aria-hidden="true"></canvas></figure></div>
 <div class="stats">
 <div class="stat"><b>1.346</b><span data-l="pt">commits (sem merges) nas minhas contas, de 2022 a 2026</span><span data-l="en">commits (excluding merges) across my accounts, 2022–2026</span></div>
 <div class="stat"><b>700+</b><span data-l="pt">commits no GitLab da empresa, ago/2025 a nov/2026</span><span data-l="en">commits on the company GitLab, Aug 2025 to Nov 2026</span></div>
@@ -270,23 +270,29 @@ if(!fig||!img||!cv)return;
 function done(){fig.classList.add('ready')}
 if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){done();return}
 function run(){
- var S=300,dpr=Math.min(window.devicePixelRatio||1,2),N=36,cell=S/N;
+ var S=300,dpr=Math.min(window.devicePixelRatio||1,2),N=84,cell=S/N;
  cv.width=cv.height=S*dpr;var c=cv.getContext('2d');c.scale(dpr,dpr);
  var o=document.createElement('canvas');o.width=o.height=N;var oc=o.getContext('2d');
  try{oc.drawImage(img,0,0,N,N);var d=oc.getImageData(0,0,N,N).data}catch(e){done();return}
+ var L=[],lo=1,hi=0,i,x,y;
+ for(i=0;i<N*N;i++){var l=(0.5*d[i*4]+0.4*d[i*4+1]+0.1*d[i*4+2])/255;L.push(l);if(l<lo)lo=l;if(l>hi)hi=l}
  var dots=[];
- for(var y=0;y<N;y++)for(var x=0;x<N;x++){var i=(y*N+x)*4,r=d[i],g=d[i+1],b=d[i+2],l=(0.2126*r+0.7152*g+0.0722*b)/255;
-  dots.push({x:(x+.5)*cell,y:(y+.5)*cell,r:r,g:g,b:b,s:(0.25+0.75*l)*cell*0.62,dl:(x+y)/(2*N)*0.5+Math.random()*0.12})}
- var t0=performance.now(),DUR=2200;
+ for(y=0;y<N;y++)for(x=0;x<N;x++){var v=(L[y*N+x]-lo)/((hi-lo)||1),dx=(x+.5)/N-.5,dy=(y+.5)/N-.42,rr=Math.sqrt(dx*dx+dy*dy);
+  v*=Math.max(0,1-0.7*Math.max(0,rr-0.22)/0.5);v=Math.pow(v,1.5);
+  if(v<0.05)continue;
+  dots.push({x:(x+.5)*cell,y:(y+.5)*cell,s:(0.15+0.85*v)*cell*0.56,
+   col:'rgb('+Math.round(86+154*v)+','+Math.round(12+58*v)+','+Math.round(31+59*v)+')',
+   dl:Math.random()*0.62+(y/N)*0.1})}
+ var t0=performance.now(),DUR=2600,HOLD=700,ended=0;
  (function f(now){
-  var t=(now-t0)/DUR;c.clearRect(0,0,S,S);
-  dots.forEach(function(p){var k=Math.max(0,Math.min(1,(t-p.dl)/0.45));k=1-Math.pow(1-k,3);
-   c.fillStyle='rgb('+p.r+','+p.g+','+p.b+')';c.beginPath();c.arc(p.x,p.y,p.s*k,0,6.2832);c.fill()});
-  if(t<1)requestAnimationFrame(f);else done();
+  var t=(now-t0)/DUR;c.fillStyle='#0c0a0b';c.fillRect(0,0,S,S);
+  for(var j=0;j<dots.length;j++){var p=dots[j],k=Math.max(0,Math.min(1,(t-p.dl)/0.28));if(!k)continue;k=1-Math.pow(1-k,3);
+   c.fillStyle=p.col;c.beginPath();c.arc(p.x,p.y,p.s*k,0,6.2832);c.fill()}
+  if(t<1)requestAnimationFrame(f);else if(!ended){ended=1;setTimeout(done,HOLD)}
  })(t0);
 }
 if(img.complete)run();else img.addEventListener('load',run);
-setTimeout(function(){if(!fig.classList.contains('ready'))done()},4500);
+setTimeout(function(){if(!fig.classList.contains('ready'))done()},7000);
 })();
 </script>
 </body>
