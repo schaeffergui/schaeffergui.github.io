@@ -46,6 +46,41 @@ footer{max-width:1000px;margin:auto;padding:2rem 1.2rem;color:var(--mut);font-si
 .gal a:hover img{border-color:var(--acc)}
 [data-l]{display:none}
 html[lang=pt-BR] [data-l=pt],html[lang=en] [data-l=en]{display:revert}
+.car{overflow:hidden;margin-top:.9rem;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.car-track{display:flex;gap:12px;width:max-content;animation:carL var(--dur,70s) linear infinite;will-change:transform}
+.car.rev .car-track{animation-direction:reverse}
+@keyframes carL{to{transform:translateX(calc(-50% - 6px))}}
+.car:hover .car-track,.car:focus-within .car-track,.car.hold .car-track{animation-play-state:paused}
+.ci{flex:0 0 auto;display:block;position:relative;width:clamp(210px,30vw,300px);aspect-ratio:16/10;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--card);cursor:zoom-in;padding:0;font:inherit;text-decoration:none}
+.ci img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.ci:hover,.ci:focus-visible{border-color:var(--acc);outline:none;box-shadow:0 0 0 3px rgba(230,57,80,.28)}
+.ci:hover img{transform:scale(1.06)}
+.ci::after{content:"";position:absolute;right:8px;bottom:8px;width:26px;height:26px;border-radius:50%;background:rgba(12,10,11,.72) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7'/%3E%3C/svg%3E") center/13px no-repeat;opacity:0;transition:opacity .25s}
+.ci:hover::after,.ci:focus-visible::after{opacity:1}
+.car-hint{color:var(--mut);font-size:.8rem;margin:.5rem 0 0}
+@media (prefers-reduced-motion:reduce){.car{overflow-x:auto;-webkit-mask-image:none;mask-image:none}.car-track{animation:none}}
+.lb{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;flex-direction:column;gap:.9rem;padding:3.2rem 1rem 1.4rem;background:rgba(12,10,11,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.lb.open{display:flex;animation:lbin .22s ease}
+@keyframes lbin{from{opacity:0}to{opacity:1}}
+.lb-stage{position:relative;display:flex;align-items:center;justify-content:center;max-width:100%;min-height:0;flex:1 1 auto}
+.lb-stage img{min-width:min(72vw,780px);max-width:min(94vw,1280px);max-height:calc(100vh - 11rem);width:auto;height:auto;border-radius:12px;border:1px solid var(--line);box-shadow:0 24px 80px rgba(0,0,0,.65),0 0 0 6px #171113;background:#171113;display:block}
+.lb-stage img.swap{animation:lbswap .25s ease}
+@keyframes lbswap{from{opacity:.25;transform:scale(.985)}to{opacity:1;transform:none}}
+.lb-top{position:absolute;top:.9rem;left:1rem;right:1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;color:#f2ebec}
+.lb-title{color:#e63950;text-transform:uppercase;font-size:.78rem;letter-spacing:.12em}
+.lb-count{color:#aa9ba0;font-size:.85rem;font-variant-numeric:tabular-nums}
+.lb-btn{background:#171113;color:#f2ebec;border:1px solid #2d1b20;width:44px;height:44px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0;transition:border-color .2s,background .2s}
+.lb-btn:hover,.lb-btn:focus-visible{border-color:#e63950;background:#a81f34;outline:none}
+.lb-btn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);z-index:2}
+.lb-prev{left:max(.5rem,calc(50% - min(47vw,640px) - 56px))}
+.lb-next{right:max(.5rem,calc(50% - min(47vw,640px) - 56px))}
+.lb-close{flex:0 0 auto}
+.lb-bar{display:flex;align-items:center;justify-content:center;gap:.5rem;flex-wrap:wrap;max-width:94vw}
+.lb-dot{width:7px;height:7px;border-radius:50%;background:#2d1b20;border:0;padding:0;cursor:pointer}
+.lb-dot.on{background:#e63950}
+@media (max-width:640px){.lb-prev{left:.4rem}.lb-next{right:.4rem}.lb-prev,.lb-next{top:auto;bottom:.8rem;transform:none}.lb-bar{padding-bottom:3.6rem}.lb-stage img{max-height:calc(100vh - 12rem)}}
+@media (prefers-reduced-motion:reduce){.lb.open,.lb-stage img.swap{animation:none}}
 </style>
 </head>
 <body>
@@ -174,60 +209,60 @@ html[lang=pt-BR] [data-l=pt],html[lang=en] [data-l=en]{display:revert}
 <section id="galeria">
 <div class="kick"><span data-l="pt">Galeria</span><span data-l="en">Gallery</span></div>
 <h2><span data-l="pt">Capturas dos projetos</span><span data-l="en">Project captures</span></h2>
-<p class="note" data-l="pt">Imagens de simuladores em que trabalhei, em ambiente de desenvolvimento. Clique para ampliar.</p>
-<p class="note" data-l="en">Images of simulators I worked on, in the development environment. Click to enlarge.</p>
+<p class="note" data-l="pt">Imagens de simuladores em que trabalhei, em ambiente de desenvolvimento. Passe o mouse para pausar e clique para ampliar.</p>
+<p class="note" data-l="en">Images of simulators I worked on, in the development environment. Hover to pause and click to enlarge.</p>
 <h3 style="margin-top:1.6rem"><span data-l="pt">Cenários: estradas, terreno e vegetação</span><span data-l="en">Scenery: roads, terrain and vegetation</span></h3>
-<div class="gal">
-<a href="cen-01.jpg" target="_blank" rel="noopener"><img src="cen-01.jpg" loading="lazy" alt="Cenário de simulação 1"></a>
-<a href="cen-02.jpg" target="_blank" rel="noopener"><img src="cen-02.jpg" loading="lazy" alt="Cenário de simulação 2"></a>
-<a href="cen-03.jpg" target="_blank" rel="noopener"><img src="cen-03.jpg" loading="lazy" alt="Cenário de simulação 3"></a>
-<a href="cen-04.jpg" target="_blank" rel="noopener"><img src="cen-04.jpg" loading="lazy" alt="Cenário de simulação 4"></a>
-<a href="cen-05.jpg" target="_blank" rel="noopener"><img src="cen-05.jpg" loading="lazy" alt="Cenário de simulação 5"></a>
-<a href="cen-06.jpg" target="_blank" rel="noopener"><img src="cen-06.jpg" loading="lazy" alt="Cenário de simulação 6"></a>
-<a href="cen-07.jpg" target="_blank" rel="noopener"><img src="cen-07.jpg" loading="lazy" alt="Cenário de simulação 7"></a>
-</div>
+<div class="car"><div class="car-track">
+<a class="ci" href="cen-01.jpg" data-full="cen-01.jpg"><img src="cen-01.jpg" loading="lazy" alt="Cenário de simulação 1" width="300" height="188"></a>
+<a class="ci" href="cen-02.jpg" data-full="cen-02.jpg"><img src="cen-02.jpg" loading="lazy" alt="Cenário de simulação 2" width="300" height="188"></a>
+<a class="ci" href="cen-03.jpg" data-full="cen-03.jpg"><img src="cen-03.jpg" loading="lazy" alt="Cenário de simulação 3" width="300" height="188"></a>
+<a class="ci" href="cen-04.jpg" data-full="cen-04.jpg"><img src="cen-04.jpg" loading="lazy" alt="Cenário de simulação 4" width="300" height="188"></a>
+<a class="ci" href="cen-05.jpg" data-full="cen-05.jpg"><img src="cen-05.jpg" loading="lazy" alt="Cenário de simulação 5" width="300" height="188"></a>
+<a class="ci" href="cen-06.jpg" data-full="cen-06.jpg"><img src="cen-06.jpg" loading="lazy" alt="Cenário de simulação 6" width="300" height="188"></a>
+<a class="ci" href="cen-07.jpg" data-full="cen-07.jpg"><img src="cen-07.jpg" loading="lazy" alt="Cenário de simulação 7" width="300" height="188"></a>
+</div></div>
 <h3 style="margin-top:1.6rem"><span data-l="pt">Simulador agrícola</span><span data-l="en">Agricultural simulator</span></h3>
-<div class="gal">
-<a href="agro-03.jpg" target="_blank" rel="noopener"><img src="agro-03.jpg" loading="lazy" alt="Simulador agrícola 3"></a>
-<a href="agro-04.jpg" target="_blank" rel="noopener"><img src="agro-04.jpg" loading="lazy" alt="Simulador agrícola 4"></a>
-<a href="agro-05.jpg" target="_blank" rel="noopener"><img src="agro-05.jpg" loading="lazy" alt="Simulador agrícola 5"></a>
-<a href="agro-06.jpg" target="_blank" rel="noopener"><img src="agro-06.jpg" loading="lazy" alt="Simulador agrícola 6"></a>
-<a href="agro-07.jpg" target="_blank" rel="noopener"><img src="agro-07.jpg" loading="lazy" alt="Simulador agrícola 7"></a>
-<a href="agro-08.jpg" target="_blank" rel="noopener"><img src="agro-08.jpg" loading="lazy" alt="Simulador agrícola 8"></a>
-<a href="agro-09.jpg" target="_blank" rel="noopener"><img src="agro-09.jpg" loading="lazy" alt="Simulador agrícola 9"></a>
-<a href="agro-10.jpg" target="_blank" rel="noopener"><img src="agro-10.jpg" loading="lazy" alt="Simulador agrícola 10"></a>
-<a href="agro-11.jpg" target="_blank" rel="noopener"><img src="agro-11.jpg" loading="lazy" alt="Simulador agrícola 11"></a>
-<a href="agro-13.jpg" target="_blank" rel="noopener"><img src="agro-13.jpg" loading="lazy" alt="Simulador agrícola 13"></a>
-<a href="agro-14.jpg" target="_blank" rel="noopener"><img src="agro-14.jpg" loading="lazy" alt="Simulador agrícola 14"></a>
-<a href="agro-15.jpg" target="_blank" rel="noopener"><img src="agro-15.jpg" loading="lazy" alt="Colheitadeira vista de dentro da cabine, com a lista de tarefas da aula e o mapa do trajeto"></a>
-<a href="agro-16.jpg" target="_blank" rel="noopener"><img src="agro-16.jpg" loading="lazy" alt="Colheitadeira em plantação de sorgo, com o painel de tarefas e o mapa no canto"></a>
-<a href="agro-17.jpg" target="_blank" rel="noopener"><img src="agro-17.jpg" loading="lazy" alt="Visão do operador na colheitadeira, com tarefas da aula e mapa do trajeto"></a>
-<a href="agro-18.jpg" target="_blank" rel="noopener"><img src="agro-18.jpg" loading="lazy" alt="Painel da colheitadeira com o mapa de trajeto, indicadores e plataforma de corte"></a>
-<a href="agro-19.jpg" target="_blank" rel="noopener"><img src="agro-19.jpg" loading="lazy" alt="Menu principal do simulador agrícola com Treinamento, Gerenciamento de Aula, Demonstração e Suporte"></a>
-<a href="agro-20.jpg" target="_blank" rel="noopener"><img src="agro-20.jpg" loading="lazy" alt="Tela de seleção de treinamento, mapa e cultura do simulador agrícola"></a>
-<a href="agro-21.jpg" target="_blank" rel="noopener"><img src="agro-21.jpg" loading="lazy" alt="Colheitadeira roxa colhendo trigo, com a poeira da operação"></a>
-<a href="agro-23.jpg" target="_blank" rel="noopener"><img src="agro-23.jpg" loading="lazy" alt="Colheitadeira e caminhão graneleiro no pátio da fazenda, com os silos ao fundo"></a>
-<a href="agro-24.jpg" target="_blank" rel="noopener"><img src="agro-24.jpg" loading="lazy" alt="Pulverizador autopropelido com a barra aberta aplicando em uma lavoura"></a>
-<a href="agro-25.jpg" target="_blank" rel="noopener"><img src="agro-25.jpg" loading="lazy" alt="Pulverizador pulverizando a lavoura, visto de lado"></a>
-<a href="agro-26.jpg" target="_blank" rel="noopener"><img src="agro-26.jpg" loading="lazy" alt="Trator com plantadeira no pátio da fazenda, com os silos ao fundo"></a>
-<a href="agro-27.jpg" target="_blank" rel="noopener"><img src="agro-27.jpg" loading="lazy" alt="Trator roxo em primeiro plano, com outras máquinas ao fundo no galpão"></a>
-<a href="agro-28.jpg" target="_blank" rel="noopener"><img src="agro-28.jpg" loading="lazy" alt="Trator com a plantadeira de várias linhas em um dia de céu aberto"></a>
-</div>
+<div class="car"><div class="car-track">
+<a class="ci" href="agro-03.jpg" data-full="agro-03.jpg"><img src="agro-03.jpg" loading="lazy" alt="Simulador agrícola 3" width="300" height="188"></a>
+<a class="ci" href="agro-04.jpg" data-full="agro-04.jpg"><img src="agro-04.jpg" loading="lazy" alt="Simulador agrícola 4" width="300" height="188"></a>
+<a class="ci" href="agro-05.jpg" data-full="agro-05.jpg"><img src="agro-05.jpg" loading="lazy" alt="Simulador agrícola 5" width="300" height="188"></a>
+<a class="ci" href="agro-06.jpg" data-full="agro-06.jpg"><img src="agro-06.jpg" loading="lazy" alt="Simulador agrícola 6" width="300" height="188"></a>
+<a class="ci" href="agro-07.jpg" data-full="agro-07.jpg"><img src="agro-07.jpg" loading="lazy" alt="Simulador agrícola 7" width="300" height="188"></a>
+<a class="ci" href="agro-08.jpg" data-full="agro-08.jpg"><img src="agro-08.jpg" loading="lazy" alt="Simulador agrícola 8" width="300" height="188"></a>
+<a class="ci" href="agro-09.jpg" data-full="agro-09.jpg"><img src="agro-09.jpg" loading="lazy" alt="Simulador agrícola 9" width="300" height="188"></a>
+<a class="ci" href="agro-10.jpg" data-full="agro-10.jpg"><img src="agro-10.jpg" loading="lazy" alt="Simulador agrícola 10" width="300" height="188"></a>
+<a class="ci" href="agro-11.jpg" data-full="agro-11.jpg"><img src="agro-11.jpg" loading="lazy" alt="Simulador agrícola 11" width="300" height="188"></a>
+<a class="ci" href="agro-13.jpg" data-full="agro-13.jpg"><img src="agro-13.jpg" loading="lazy" alt="Simulador agrícola 13" width="300" height="188"></a>
+<a class="ci" href="agro-14.jpg" data-full="agro-14.jpg"><img src="agro-14.jpg" loading="lazy" alt="Simulador agrícola 14" width="300" height="188"></a>
+<a class="ci" href="agro-15.jpg" data-full="agro-15.jpg"><img src="agro-15.jpg" loading="lazy" alt="Colheitadeira vista de dentro da cabine, com a lista de tarefas da aula e o mapa do trajeto" width="300" height="188"></a>
+<a class="ci" href="agro-16.jpg" data-full="agro-16.jpg"><img src="agro-16.jpg" loading="lazy" alt="Colheitadeira em plantação de sorgo, com o painel de tarefas e o mapa no canto" width="300" height="188"></a>
+<a class="ci" href="agro-17.jpg" data-full="agro-17.jpg"><img src="agro-17.jpg" loading="lazy" alt="Visão do operador na colheitadeira, com tarefas da aula e mapa do trajeto" width="300" height="188"></a>
+<a class="ci" href="agro-18.jpg" data-full="agro-18.jpg"><img src="agro-18.jpg" loading="lazy" alt="Painel da colheitadeira com o mapa de trajeto, indicadores e plataforma de corte" width="300" height="188"></a>
+<a class="ci" href="agro-19.jpg" data-full="agro-19.jpg"><img src="agro-19.jpg" loading="lazy" alt="Menu principal do simulador agrícola com Treinamento, Gerenciamento de Aula, Demonstração e Suporte" width="300" height="188"></a>
+<a class="ci" href="agro-20.jpg" data-full="agro-20.jpg"><img src="agro-20.jpg" loading="lazy" alt="Tela de seleção de treinamento, mapa e cultura do simulador agrícola" width="300" height="188"></a>
+<a class="ci" href="agro-21.jpg" data-full="agro-21.jpg"><img src="agro-21.jpg" loading="lazy" alt="Colheitadeira roxa colhendo trigo, com a poeira da operação" width="300" height="188"></a>
+<a class="ci" href="agro-23.jpg" data-full="agro-23.jpg"><img src="agro-23.jpg" loading="lazy" alt="Colheitadeira e caminhão graneleiro no pátio da fazenda, com os silos ao fundo" width="300" height="188"></a>
+<a class="ci" href="agro-24.jpg" data-full="agro-24.jpg"><img src="agro-24.jpg" loading="lazy" alt="Pulverizador autopropelido com a barra aberta aplicando em uma lavoura" width="300" height="188"></a>
+<a class="ci" href="agro-25.jpg" data-full="agro-25.jpg"><img src="agro-25.jpg" loading="lazy" alt="Pulverizador pulverizando a lavoura, visto de lado" width="300" height="188"></a>
+<a class="ci" href="agro-26.jpg" data-full="agro-26.jpg"><img src="agro-26.jpg" loading="lazy" alt="Trator com plantadeira no pátio da fazenda, com os silos ao fundo" width="300" height="188"></a>
+<a class="ci" href="agro-27.jpg" data-full="agro-27.jpg"><img src="agro-27.jpg" loading="lazy" alt="Trator roxo em primeiro plano, com outras máquinas ao fundo no galpão" width="300" height="188"></a>
+<a class="ci" href="agro-28.jpg" data-full="agro-28.jpg"><img src="agro-28.jpg" loading="lazy" alt="Trator com a plantadeira de várias linhas em um dia de céu aberto" width="300" height="188"></a>
+</div></div>
 <h3 style="margin-top:1.6rem"><span data-l="pt">Simulador de equipamentos pesados (Linha Amarela)</span><span data-l="en">Heavy-equipment simulator (Yellow Line)</span></h3>
-<div class="gal">
-<a href="esc-01.jpg" target="_blank" rel="noopener"><img src="esc-01.jpg" loading="lazy" alt="Simulador de equipamentos pesados 1"></a>
-<a href="esc-02.jpg" target="_blank" rel="noopener"><img src="esc-02.jpg" loading="lazy" alt="Simulador de equipamentos pesados 2"></a>
-<a href="esc-03.jpg" target="_blank" rel="noopener"><img src="esc-03.jpg" loading="lazy" alt="Simulador de equipamentos pesados 3"></a>
-<a href="esc-04.jpg" target="_blank" rel="noopener"><img src="esc-04.jpg" loading="lazy" alt="Simulador de equipamentos pesados 4"></a>
-<a href="esc-05.jpg" target="_blank" rel="noopener"><img src="esc-05.jpg" loading="lazy" alt="Simulador de equipamentos pesados 5"></a>
-<a href="esc-06.jpg" target="_blank" rel="noopener"><img src="esc-06.jpg" loading="lazy" alt="Simulador de equipamentos pesados 6"></a>
-<a href="esc-07.jpg" target="_blank" rel="noopener"><img src="esc-07.jpg" loading="lazy" alt="Simulador de equipamentos pesados 7"></a>
-<a href="esc-08.jpg" target="_blank" rel="noopener"><img src="esc-08.jpg" loading="lazy" alt="Simulador de equipamentos pesados 8"></a>
-<a href="esc-09.jpg" target="_blank" rel="noopener"><img src="esc-09.jpg" loading="lazy" alt="Simulador de equipamentos pesados 9"></a>
-<a href="esc-10.jpg" target="_blank" rel="noopener"><img src="esc-10.jpg" loading="lazy" alt="Simulador de equipamentos pesados 10"></a>
-<a href="esc-11.jpg" target="_blank" rel="noopener"><img src="esc-11.jpg" loading="lazy" alt="Simulador de equipamentos pesados 11"></a>
-<a href="esc-12.jpg" target="_blank" rel="noopener"><img src="esc-12.jpg" loading="lazy" alt="Simulador de equipamentos pesados 12"></a>
-</div>
+<div class="car"><div class="car-track">
+<a class="ci" href="esc-01.jpg" data-full="esc-01.jpg"><img src="esc-01.jpg" loading="lazy" alt="Simulador de equipamentos pesados 1" width="300" height="188"></a>
+<a class="ci" href="esc-02.jpg" data-full="esc-02.jpg"><img src="esc-02.jpg" loading="lazy" alt="Simulador de equipamentos pesados 2" width="300" height="188"></a>
+<a class="ci" href="esc-03.jpg" data-full="esc-03.jpg"><img src="esc-03.jpg" loading="lazy" alt="Simulador de equipamentos pesados 3" width="300" height="188"></a>
+<a class="ci" href="esc-04.jpg" data-full="esc-04.jpg"><img src="esc-04.jpg" loading="lazy" alt="Simulador de equipamentos pesados 4" width="300" height="188"></a>
+<a class="ci" href="esc-05.jpg" data-full="esc-05.jpg"><img src="esc-05.jpg" loading="lazy" alt="Simulador de equipamentos pesados 5" width="300" height="188"></a>
+<a class="ci" href="esc-06.jpg" data-full="esc-06.jpg"><img src="esc-06.jpg" loading="lazy" alt="Simulador de equipamentos pesados 6" width="300" height="188"></a>
+<a class="ci" href="esc-07.jpg" data-full="esc-07.jpg"><img src="esc-07.jpg" loading="lazy" alt="Simulador de equipamentos pesados 7" width="300" height="188"></a>
+<a class="ci" href="esc-08.jpg" data-full="esc-08.jpg"><img src="esc-08.jpg" loading="lazy" alt="Simulador de equipamentos pesados 8" width="300" height="188"></a>
+<a class="ci" href="esc-09.jpg" data-full="esc-09.jpg"><img src="esc-09.jpg" loading="lazy" alt="Simulador de equipamentos pesados 9" width="300" height="188"></a>
+<a class="ci" href="esc-10.jpg" data-full="esc-10.jpg"><img src="esc-10.jpg" loading="lazy" alt="Simulador de equipamentos pesados 10" width="300" height="188"></a>
+<a class="ci" href="esc-11.jpg" data-full="esc-11.jpg"><img src="esc-11.jpg" loading="lazy" alt="Simulador de equipamentos pesados 11" width="300" height="188"></a>
+<a class="ci" href="esc-12.jpg" data-full="esc-12.jpg"><img src="esc-12.jpg" loading="lazy" alt="Simulador de equipamentos pesados 12" width="300" height="188"></a>
+</div></div>
 </section>
 
 <section id="skills">
@@ -361,6 +396,72 @@ function tick(now){
  c.globalAlpha=1;parts=keep;
  if(parts.length)raf=requestAnimationFrame(tick);else raf=0;
 }
+})();
+</script>
+<script>
+(function(){
+var cars=[].slice.call(document.querySelectorAll('.car'));
+if(!cars.length)return;
+var SPEED=42;
+function setDur(car){
+ var tr=car.querySelector('.car-track');if(!tr)return;
+ var half=tr.scrollWidth/2;if(!half)return;
+ tr.style.setProperty('--dur',Math.max(25,half/SPEED).toFixed(1)+'s');
+}
+cars.forEach(function(car,ci){
+ var tr=car.querySelector('.car-track'),items=[].slice.call(tr.children);
+ items.forEach(function(a,i){a.setAttribute('data-i',i);a.setAttribute('role','button');a.setAttribute('tabindex','0');
+  var im=a.querySelector('img');a.setAttribute('aria-label',(im&&im.alt?im.alt:'Imagem '+(i+1))+' — ampliar')});
+ items.forEach(function(a){var cl=a.cloneNode(true);cl.setAttribute('aria-hidden','true');cl.setAttribute('tabindex','-1');cl.removeAttribute('role');cl.removeAttribute('aria-label');cl.setAttribute('data-clone','1');tr.appendChild(cl)});
+ if(ci%2===1)car.classList.add('rev');
+ setDur(car);
+});
+addEventListener('load',function(){cars.forEach(setDur)});
+addEventListener('resize',function(){cars.forEach(setDur)});
+
+/* visualizador */
+var lb=document.createElement('div');lb.className='lb';lb.setAttribute('role','dialog');lb.setAttribute('aria-modal','true');lb.setAttribute('aria-label','Visualizador de imagens');
+lb.innerHTML='<div class="lb-top"><span><span class="lb-title"></span> <span class="lb-count"></span></span><button class="lb-btn lb-close" type="button" aria-label="Fechar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>'+
+ '<div class="lb-stage"><button class="lb-btn lb-prev" type="button" aria-label="Anterior"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><img alt=""><button class="lb-btn lb-next" type="button" aria-label="Próxima"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button></div>'+
+ '<div class="lb-bar"></div>';
+document.body.appendChild(lb);
+var img=lb.querySelector('.lb-stage img'),ttl=lb.querySelector('.lb-title'),cnt=lb.querySelector('.lb-count'),bar=lb.querySelector('.lb-bar');
+var cur=null,idx=0,list=[],lastFocus=null,tx=null;
+function lang(){return document.documentElement.lang==='en'?'en':'pt'}
+function groupTitle(car){var h=car.previousElementSibling;while(h&&h.tagName!=='H3')h=h.previousElementSibling;
+ if(!h)return '';var s=h.querySelector('[data-l="'+lang()+'"]');return s?s.textContent:h.textContent}
+function show(i,fresh){
+ idx=(i+list.length)%list.length;var a=list[idx],im=a.querySelector('img');
+ img.classList.remove('swap');void img.offsetWidth;
+ img.src=a.getAttribute('data-full');img.alt=im?im.alt:'';img.classList.add('swap');
+ ttl.textContent=groupTitle(cur);cnt.textContent=(idx+1)+' / '+list.length;
+ [].forEach.call(bar.children,function(d,k){d.classList.toggle('on',k===idx)});
+ [-1,1].forEach(function(o){var n=list[(idx+o+list.length)%list.length];if(n){var p=new Image();p.src=n.getAttribute('data-full')}});
+}
+function open(car,i,trigger){
+ cur=car;list=[].slice.call(car.querySelectorAll('.ci:not([data-clone])'));lastFocus=trigger||document.activeElement;
+ bar.innerHTML='';
+ if(list.length<=24)list.forEach(function(_,k){var d=document.createElement('button');d.type='button';d.className='lb-dot';d.setAttribute('aria-label','Imagem '+(k+1));d.addEventListener('click',function(){show(k)});bar.appendChild(d)});
+ lb.classList.add('open');document.documentElement.style.overflow='hidden';car.classList.add('hold');
+ show(i,true);lb.querySelector('.lb-close').focus();
+}
+function close(){lb.classList.remove('open');document.documentElement.style.overflow='';if(cur)cur.classList.remove('hold');
+ if(lastFocus&&lastFocus.focus)try{lastFocus.focus({preventScroll:true})}catch(e){}}
+cars.forEach(function(car){
+ car.addEventListener('click',function(e){var a=e.target.closest('.ci');if(!a)return;e.preventDefault();
+  var items=[].slice.call(car.querySelectorAll('.ci:not([data-clone])'));var i=parseInt(a.getAttribute('data-i'),10);open(car,i,a)});
+ car.addEventListener('keydown',function(e){if((e.key==='Enter'||e.key===' ')&&e.target.classList.contains('ci')){e.preventDefault();e.target.click()}});
+});
+lb.querySelector('.lb-close').addEventListener('click',close);
+lb.querySelector('.lb-prev').addEventListener('click',function(){show(idx-1)});
+lb.querySelector('.lb-next').addEventListener('click',function(){show(idx+1)});
+lb.addEventListener('click',function(e){if(e.target===lb||e.target.classList.contains('lb-stage')||e.target.classList.contains('lb-bar'))close()});
+addEventListener('keydown',function(e){if(!lb.classList.contains('open'))return;
+ if(e.key==='Escape')close();else if(e.key==='ArrowLeft')show(idx-1);else if(e.key==='ArrowRight')show(idx+1);
+ else if(e.key==='Tab'){var f=[].slice.call(lb.querySelectorAll('button')).filter(function(b){return b.offsetParent!==null});if(!f.length)return;
+  var first=f[0],last=f[f.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}});
+lb.addEventListener('touchstart',function(e){tx=e.touches[0].clientX},{passive:true});
+lb.addEventListener('touchend',function(e){if(tx===null)return;var dx=e.changedTouches[0].clientX-tx;tx=null;if(Math.abs(dx)>50)show(dx<0?idx+1:idx-1)},{passive:true});
 })();
 </script>
 </body>
