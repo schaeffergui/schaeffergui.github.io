@@ -278,40 +278,88 @@ g('th').onclick=()=>{h.dataset.theme=h.dataset.theme==='dark'?'light':'dark'};
 (function(){
 var fig=document.querySelector('.portrait'),img=document.getElementById('pimg'),cv=document.getElementById('pdots');
 if(!fig||!img||!cv)return;
-function done(){fig.classList.add('ready')}
-if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){done();return}
+var started=false;
+function showPhoto(){fig.classList.add('ready')}
+if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){showPhoto();return}
 function run(){
  var S=fig.clientWidth||300,dp=window.devicePixelRatio||1,dev=Math.round(S*dp),cd=Math.max(2,Math.round(dev/150)),N=Math.floor(dev/cd),ss=dp<2?2:1,cell=cd*ss,B=N*cell,css=N*cd/dp;
  cv.width=cv.height=B;cv.style.width=cv.style.height=css+'px';cv.style.left=cv.style.top=((S-css)/2)+'px';cv.style.right=cv.style.bottom='auto';
- var c=cv.getContext('2d');
+ var c=cv.getContext('2d'),BG='#0c0a0b';
  var o=document.createElement('canvas');o.width=o.height=N;var oc=o.getContext('2d');
- try{oc.drawImage(img,0,0,N,N);var d=oc.getImageData(0,0,N,N).data}catch(e){done();return}
+ try{oc.drawImage(img,0,0,N,N);var d=oc.getImageData(0,0,N,N).data}catch(e){showPhoto();return}
  var L=[],i,x,y;
  for(i=0;i<N*N;i++)L.push((0.45*d[i*4]+0.45*d[i*4+1]+0.1*d[i*4+2])/255);
  var so=L.slice().sort(function(a,b){return a-b}),lo=so[Math.floor(so.length*0.01)],hi=so[Math.floor(so.length*0.995)];
  var R=[[0,12,10,11],[0.10,38,8,15],[0.28,86,12,31],[0.52,168,31,52],[0.78,230,57,80],[1,255,150,160]];
  function tone(v){for(var q=0;q<R.length-1;q++){var A=R[q],Z=R[q+1];if(v<=Z[0]){var k=(v-A[0])/(Z[0]-A[0]);
   return 'rgb('+Math.round(A[1]+(Z[1]-A[1])*k)+','+Math.round(A[2]+(Z[2]-A[2])*k)+','+Math.round(A[3]+(Z[3]-A[3])*k)+')'}}return 'rgb(255,150,160)'}
- var dots=[];
+ var dots=[],grid=new Array(N*N);
  for(y=0;y<N;y++)for(x=0;x<N;x++){var v=Math.min(1,Math.max(0,(L[y*N+x]-lo)/((hi-lo)||1))),dx=(x+.5)/N-.5,dy=(y+.5)/N-.42,rr=Math.sqrt(dx*dx+dy*dy);
   v*=Math.max(0,1-0.55*Math.max(0,rr-0.25)/0.5);v=Math.pow(v,0.95);
   if(v<0.03)continue;
-  dots.push({x:(x+.5)*cell,y:(y+.5)*cell,s:(0.55+0.45*Math.pow(v,0.6))*cell*0.52,col:tone(v),
-   dl:Math.random()*0.62+(y/N)*0.1,f:0})}
+  var p={x:(x+.5)*cell,y:(y+.5)*cell,s:(0.55+0.45*Math.pow(v,0.6))*cell*0.52,col:tone(v),dl:Math.random()*0.62+(y/N)*0.1,f:0,ox:0,oy:0,on:0};
+  dots.push(p);grid[y*N+x]=p}
  dots.sort(function(a,b){return a.dl-b.dl});
- c.fillStyle='#0c0a0b';c.fillRect(0,0,B,B);
- var t0=performance.now(),DUR=2800,HOLD=900,first=0,ended=0;
+ c.fillStyle=BG;c.fillRect(0,0,B,B);
+ started=true;
+ var t0=performance.now(),DUR=2800,first=0,ended=0;
  (function f(now){
   var t=(now-t0)/DUR;
   while(first<dots.length&&dots[first].f)first++;
   for(var j=first;j<dots.length;j++){var p=dots[j];if(p.dl>t)break;if(p.f)continue;
    var k=Math.min(1,(t-p.dl)/0.22);if(k>=1)p.f=1;k=1-Math.pow(1-k,3);
    c.fillStyle=p.col;c.beginPath();c.arc(p.x,p.y,p.s*k,0,6.2832);c.fill()}
-  if(first<dots.length&&t<1.4)requestAnimationFrame(f);else if(!ended){ended=1;setTimeout(done,HOLD)}
+  if(first<dots.length&&t<1.4)requestAnimationFrame(f);else if(!ended){ended=1;live()}
  })(t0);
+
+ /* depois da animação: os pontos seguem o mouse (ímã com retorno suave) */
+ function live(){
+  fig.classList.add('live');
+  var base=document.createElement('canvas');base.width=base.height=B;base.getContext('2d').drawImage(cv,0,0);
+  var act=[],mx=-1e5,my=-1e5,inside=false,raf=0,last=0,box=null,RAD=B*0.26,PULL=0.62;
+  function pos(e){var r=cv.getBoundingClientRect();mx=(e.clientX-r.left)/r.width*B;my=(e.clientY-r.top)/r.height*B}
+  function kick(){if(!raf){last=performance.now();raf=requestAnimationFrame(tick)}}
+  window.addEventListener('pointermove',function(e){pos(e);inside=true;kick()},{passive:true});
+  document.documentElement.addEventListener('mouseleave',function(){inside=false;kick()});
+  window.addEventListener('blur',function(){inside=false;kick()});
+  function tick(now){
+   var dt=Math.min(0.05,(now-last)/1000);last=now;var a=1-Math.exp(-dt*13);
+   if(inside){
+    var x0=Math.max(0,Math.floor((mx-RAD)/cell)),x1=Math.min(N-1,Math.floor((mx+RAD)/cell)),y0=Math.max(0,Math.floor((my-RAD)/cell)),y1=Math.min(N-1,Math.floor((my+RAD)/cell));
+    for(var yy=y0;yy<=y1;yy++)for(var xx=x0;xx<=x1;xx++){var q=grid[yy*N+xx];if(q&&!q.on){q.on=1;act.push(q)}}
+   }
+   var keep=[],nb=null,i,p;
+   for(i=0;i<act.length;i++){
+    p=act[i];var tx=0,ty=0,bump=0;
+    if(inside){var ddx=mx-p.x,ddy=my-p.y,dd=Math.sqrt(ddx*ddx+ddy*ddy);
+     if(dd<RAD){var u=1-dd/RAD;u=u*u*(3-2*u);tx=ddx*PULL*u;ty=ddy*PULL*u}}
+    p.ox+=(tx-p.ox)*a;p.oy+=(ty-p.oy)*a;
+    if(Math.abs(p.ox)<0.04&&Math.abs(p.oy)<0.04&&tx===0&&ty===0){p.ox=0;p.oy=0;p.on=0}else keep.push(p);
+   }
+   /* região suja = caixa anterior + atual */
+   var minx=1e9,miny=1e9,maxx=-1e9,maxy=-1e9;
+   for(i=0;i<act.length;i++){p=act[i];var px=p.x+p.ox,py=p.y+p.oy;
+    if(px<minx)minx=px;if(px>maxx)maxx=px;if(py<miny)miny=py;if(py>maxy)maxy=py;
+    if(p.x<minx)minx=p.x;if(p.x>maxx)maxx=p.x;if(p.y<miny)miny=p.y;if(p.y>maxy)maxy=p.y}
+   var pad=cell*2.5,cur=act.length?{x0:minx-pad,y0:miny-pad,x1:maxx+pad,y1:maxy+pad}:null;
+   var u0=box&&cur?{x0:Math.min(box.x0,cur.x0),y0:Math.min(box.y0,cur.y0),x1:Math.max(box.x1,cur.x1),y1:Math.max(box.y1,cur.y1)}:(cur||box);
+   if(u0){var rx=Math.max(0,Math.floor(u0.x0)),ry=Math.max(0,Math.floor(u0.y0)),rw=Math.min(B,Math.ceil(u0.x1))-rx,rh=Math.min(B,Math.ceil(u0.y1))-ry;
+    if(rw>0&&rh>0)c.drawImage(base,rx,ry,rw,rh,rx,ry,rw,rh)}
+   /* apaga a posição original dos pontos ativos que ainda se movem e redesenha deslocados */
+   c.fillStyle=BG;
+   for(i=0;i<keep.length;i++){p=keep[i];c.fillRect(p.x-cell/2,p.y-cell/2,cell,cell)}
+   var lastCol='';
+   for(i=0;i<keep.length;i++){p=keep[i];
+    if(p.col!==lastCol){c.fillStyle=p.col;lastCol=p.col}
+    var dd2=Math.sqrt(p.ox*p.ox+p.oy*p.oy),grow=1+0.45*Math.min(1,dd2/(RAD*0.35));
+    c.beginPath();c.arc(p.x+p.ox,p.y+p.oy,p.s*grow,0,6.2832);c.fill()}
+   act=keep;box=cur;
+   if(act.length||inside)raf=requestAnimationFrame(tick);else raf=0;
+  }
+ }
 }
 if(img.complete)run();else img.addEventListener('load',run);
-setTimeout(function(){if(!fig.classList.contains('ready'))done()},7000);
+setTimeout(function(){if(!started)showPhoto()},4500);
 })();
 </script>
 <script>
