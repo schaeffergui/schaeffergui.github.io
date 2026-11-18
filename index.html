@@ -66,11 +66,9 @@ footer{max-width:1000px;margin:auto;padding:2rem 1.2rem;color:var(--mut);font-si
 .gal a:hover img{border-color:var(--acc)}
 [data-l]{display:none}
 html[lang=pt-BR] [data-l=pt],html[lang=en] [data-l=en]{display:revert}
-.car{overflow:hidden;margin-top:.9rem;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
-.car-track{display:flex;gap:12px;width:max-content;animation:carL var(--dur,70s) linear infinite;will-change:transform}
-.car.rev .car-track{animation-direction:reverse}
-@keyframes carL{to{transform:translateX(calc(-50% - 6px))}}
-.car:hover .car-track,.car:focus-within .car-track,.car.hold .car-track{animation-play-state:paused}
+.car{overflow-x:auto;overflow-y:hidden;margin-top:.9rem;scrollbar-width:none;-ms-overflow-style:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.car::-webkit-scrollbar{display:none}
+.car-track{display:flex;gap:12px;width:max-content}
 .ci{flex:0 0 auto;display:block;position:relative;width:clamp(210px,30vw,300px);aspect-ratio:16/10;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--card);cursor:zoom-in;padding:0;font:inherit;text-decoration:none}
 .ci img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
 .ci:hover,.ci:focus-visible{border-color:var(--acc);outline:none;box-shadow:0 0 0 3px rgba(230,57,80,.28)}
@@ -78,7 +76,7 @@ html[lang=pt-BR] [data-l=pt],html[lang=en] [data-l=en]{display:revert}
 .ci::after{content:"";position:absolute;right:8px;bottom:8px;width:26px;height:26px;border-radius:50%;background:rgba(12,10,11,.72) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7'/%3E%3C/svg%3E") center/13px no-repeat;opacity:0;transition:opacity .25s}
 .ci:hover::after,.ci:focus-visible::after{opacity:1}
 .car-hint{color:var(--mut);font-size:.8rem;margin:.5rem 0 0}
-@media (prefers-reduced-motion:reduce){.car{overflow-x:auto;-webkit-mask-image:none;mask-image:none}.car-track{animation:none}}
+@media (prefers-reduced-motion:reduce){.car{-webkit-mask-image:none;mask-image:none}}
 .lb{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;flex-direction:column;gap:.9rem;padding:3.2rem 1rem 1.4rem;background:rgba(12,10,11,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 .lb.open{display:flex;animation:lbin .22s ease}
 @keyframes lbin{from{opacity:0}to{opacity:1}}
@@ -394,22 +392,47 @@ vs.forEach(function(v){io.observe(v)});})();
 (function(){
 var cars=[].slice.call(document.querySelectorAll('.car'));
 if(!cars.length)return;
-var SPEED=42;
-function setDur(car){
- var tr=car.querySelector('.car-track');if(!tr)return;
- var half=tr.scrollWidth/2;if(!half)return;
- tr.style.setProperty('--dur',Math.max(25,half/SPEED).toFixed(1)+'s');
+var SPEED=42,RESUME=2500,GAP=12;
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,canHover=matchMedia('(hover: hover) and (pointer: fine)').matches;
+var S=[];
+function calc(s){
+ var tr=s.tr,half=(tr.scrollWidth+GAP)/2;if(!half)return;
+ var max=tr.scrollWidth-s.car.clientWidth,hi=Math.min(1.5*half,max-2),lo=hi-half;
+ if(lo<0)lo=0;
+ s.half=half;s.hi=hi;s.lo=lo;
+ if(s.x==null)s.x=(hi+lo)/2;
+ norm(s);s.car.scrollLeft=s.x;
 }
+function norm(s){var n=0;if(!s.half||s.hi-s.lo<s.half*0.99)return;
+ while(s.x>=s.hi&&n++<8)s.x-=s.half;
+ while(s.x<=s.lo&&n++<8)s.x+=s.half}
 cars.forEach(function(car,ci){
  var tr=car.querySelector('.car-track'),items=[].slice.call(tr.children);
  items.forEach(function(a,i){a.setAttribute('data-i',i);a.setAttribute('role','button');a.setAttribute('tabindex','0');
   var im=a.querySelector('img');a.setAttribute('aria-label',(im&&im.alt?im.alt:'Imagem '+(i+1))+' — ampliar')});
  items.forEach(function(a){var cl=a.cloneNode(true);cl.setAttribute('aria-hidden','true');cl.setAttribute('tabindex','-1');cl.removeAttribute('role');cl.removeAttribute('aria-label');cl.setAttribute('data-clone','1');tr.appendChild(cl)});
  if(ci%2===1)car.classList.add('rev');
- setDur(car);
+ var s={car:car,tr:tr,dir:ci%2===1?-1:1,x:null,half:0,hi:0,lo:0,user:false,hov:false,vis:true,t:0};
+ S.push(s);
+ function resume(){clearTimeout(s.t);s.t=setTimeout(function(){s.x=car.scrollLeft;norm(s);car.scrollLeft=s.x;s.user=false},RESUME)}
+ function begin(){s.user=true;clearTimeout(s.t)}
+ car.addEventListener('touchstart',begin,{passive:true});
+ car.addEventListener('touchend',resume,{passive:true});
+ car.addEventListener('touchcancel',resume,{passive:true});
+ car.addEventListener('wheel',function(){begin();resume()},{passive:true});
+ car.addEventListener('scroll',function(){if(!s.user)return;s.x=car.scrollLeft;resume()},{passive:true});
+ if(canHover){car.addEventListener('mouseenter',function(){s.hov=true});car.addEventListener('mouseleave',function(){s.hov=false})}
+ calc(s);
 });
-addEventListener('load',function(){cars.forEach(setDur)});
-addEventListener('resize',function(){cars.forEach(setDur)});
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){S.forEach(function(s){if(s.car===e.target)s.vis=e.isIntersecting})})},{rootMargin:'120px'});S.forEach(function(s){io.observe(s.car)})}
+addEventListener('load',function(){S.forEach(calc)});
+addEventListener('resize',function(){S.forEach(calc)});
+if(!reduce){var last=performance.now();
+ (function frame(now){var dt=Math.min(0.05,(now-last)/1000);last=now;
+  for(var i=0;i<S.length;i++){var s=S[i];
+   if(!s.vis||s.user||s.hov||!s.half||s.car.classList.contains('hold')||s.car.querySelector(':focus-visible'))continue;
+   s.x+=s.dir*SPEED*dt;norm(s);s.car.scrollLeft=s.x}
+  requestAnimationFrame(frame)})(last)}
 
 /* visualizador */
 var lb=document.createElement('div');lb.className='lb';lb.setAttribute('role','dialog');lb.setAttribute('aria-modal','true');lb.setAttribute('aria-label','Visualizador de imagens');
