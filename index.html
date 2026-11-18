@@ -60,6 +60,7 @@ td,th{padding:.55rem .6rem;border-bottom:1px solid var(--line);text-align:left;v
 th{width:30%}
 .kv{margin:.5rem 0 0;font-size:.92rem}.kv dt{color:var(--acc);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;margin-top:.6rem}.kv dd{margin:.1rem 0 0;color:var(--mut)}
 .card.feat{grid-column:1/-1}.vid{margin:0 0 .9rem}.vid video{width:100%;height:auto;display:block;border-radius:8px;border:1px solid var(--line);background:#000}.vid figcaption{color:var(--mut);font-size:.82rem;margin-top:.4rem}
+.porter-demos{display:grid;grid-template-columns:minmax(0,1fr) minmax(210px,.29fr);gap:1rem;align-items:start}.porter-demos .vid{min-width:0}.porter-demos .phone{max-width:280px}@media(max-width:720px){.porter-demos{grid-template-columns:1fr}.porter-demos .phone{max-width:280px;margin-inline:auto}}
 .note{color:var(--mut);font-size:.85rem}
 footer{max-width:1000px;margin:auto;padding:2rem 1.2rem;color:var(--mut);font-size:.85rem}
 .gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.6rem;margin-top:.8rem}
@@ -187,7 +188,10 @@ html[lang=pt-BR] [data-l=pt],html[lang=en] [data-l=en]{display:revert}
 <dt><span data-l="pt">Stack</span><span data-l="en">Stack</span></dt><dd><span data-l="pt">Unity, C#</span><span data-l="en">Unity, C#</span></dd>
 <dt><span data-l="pt">Resultado</span><span data-l="en">Result</span></dt><dd><span data-l="pt">210 commits em 6 meses (pico em janeiro de 2025), cerca de 19% do projeto.</span><span data-l="en">210 commits over 6 months (peak in January 2025), about 19% of the project.</span></dd>
 </dl></article>
-<article class="card"><span class="tag">TypeScript · React</span><span class="tag">Electron · Android</span>
+<article class="card feat"><div class="porter-demos">
+<figure class="vid"><video id="vporterdesktop" muted loop playsinline controls preload="metadata" poster="porter-desktop-poster.jpg" width="1440" height="900"><source src="porter-desktop.mp4" type="video/mp4"></video><figcaption><span data-l="pt">Porter no desktop: navegação pelas categorias de autocuidado, treinos, refeições e aprendizado. Captura da versão beta, sem dados pessoais e sem áudio.</span><span data-l="en">Porter on desktop: browsing self-care, workouts, meals and learning categories. Beta capture with no personal data or audio.</span></figcaption></figure>
+<figure class="vid phone"><video id="vportermobile" muted loop playsinline controls preload="metadata" poster="porter-mobile-poster.jpg" width="390" height="844"><source src="porter-mobile.mp4" type="video/mp4"></video><figcaption><span data-l="pt">A mesma navegação no layout de celular, gravada no navegador em largura móvel.</span><span data-l="en">The same navigation in the mobile layout, recorded in a browser at mobile width.</span></figcaption></figure>
+</div><span class="tag">TypeScript · React</span><span class="tag">Electron · Android</span>
 <h3><span data-l="pt">Porter</span><span data-l="en">Porter</span></h3>
 <dl class="kv">
 <dt><span data-l="pt">Contexto</span><span data-l="en">Context</span></dt><dd><span data-l="pt">App pessoal multiplataforma.</span><span data-l="en">Personal cross-platform app.</span></dd>
@@ -374,9 +378,12 @@ setTimeout(function(){if(!started)showPhoto()},4500);
 })();
 </script>
 <script>
-(function(){var vs=document.querySelectorAll('.vid video');if(!vs.length||!('IntersectionObserver' in window))return;
+(function(){var vs=[].slice.call(document.querySelectorAll('.vid video'));if(!vs.length||!('IntersectionObserver' in window))return;
+vs.forEach(function(v){v.addEventListener('play',function(){vs.forEach(function(other){if(other!==v)other.pause()})})});
 if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){var p=v.play();if(p&&p.catch)p.catch(function(){})}else v.pause()})},{threshold:0.4});
+var ratios=new Map(),io=new IntersectionObserver(function(es){es.forEach(function(e){ratios.set(e.target,e.isIntersecting?e.intersectionRatio:0)});
+var best=null,ratio=.4;vs.forEach(function(v){var r=ratios.get(v)||0;if(r>ratio){best=v;ratio=r}});
+vs.forEach(function(v){if(v===best){var p=v.play();if(p&&p.catch)p.catch(function(){})}else v.pause()})},{threshold:[0,.4,.6,.8,1]});
 vs.forEach(function(v){io.observe(v)});})();
 </script>
 <script>
