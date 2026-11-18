@@ -32,6 +32,8 @@ header{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--
 nav{max-width:1000px;margin:auto;padding:.7rem 1.2rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
 nav b{margin-right:auto;letter-spacing:.05em}
 nav a{color:var(--fg);text-decoration:none;font-size:.95rem}
+.nl{display:contents}
+@media (max-width:640px){nav{padding:.5rem .9rem;gap:.4rem .7rem}nav b{font-size:.9rem}.nl{order:3;flex:1 1 100%;display:flex;gap:1.1rem;overflow-x:auto;white-space:nowrap;scrollbar-width:none;padding:.1rem 0 .2rem}.nl::-webkit-scrollbar{display:none}.nl a{font-size:.9rem;padding:.2rem 0}nav button{padding:.2rem .5rem}}
 button{background:none;border:1px solid var(--line);color:var(--fg);border-radius:6px;padding:.25rem .6rem;cursor:pointer}
 button[aria-pressed=true]{border-color:var(--acc);color:var(--acc)}
 main{max-width:1000px;margin:auto;padding:0 1.2rem}
@@ -104,11 +106,13 @@ html[lang=pt-BR] [data-l=pt],html[lang=en] [data-l=en]{display:revert}
 <body>
 <header><nav>
 <b>GUILHERME SCHAEFFER</b>
+<div class="nl">
 <a href="#projetos"><span data-l="pt">Projetos</span><span data-l="en">Projects</span></a>
 <a href="#galeria"><span data-l="pt">Galeria</span><span data-l="en">Gallery</span></a>
 <a href="#skills">Skills</a>
 <a href="#sobre"><span data-l="pt">Sobre</span><span data-l="en">About</span></a>
 <a href="#contato"><span data-l="pt">Contato</span><span data-l="en">Contact</span></a>
+</div>
 <span><button id="pt" aria-pressed="true">PT</button> <button id="en" aria-pressed="false">EN</button></span>
 <button id="th" aria-label="Tema / Theme">◐</button>
 </nav></header>
